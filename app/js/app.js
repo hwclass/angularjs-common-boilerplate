@@ -1,3 +1,5 @@
+'use strict';
+
 var angular = require('angular');
  
 var TestCtrl = require('./pages/test/controllers/TestCtrl');

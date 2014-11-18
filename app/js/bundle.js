@@ -4,7 +4,7 @@
 
 /*includes*/
 require('angular');
-require('angularRoute');
+require('angular-route');
 
 /*controllers*/
 var TestCtrl = require('./pages/test/controllers/TestCtrl');
@@ -19,8 +19,8 @@ angular.module('testApp', ['ngRoute'])
 	}])
 	.controller('TestCtrl', ['$scope', TestCtrl]);
 
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_d84bf12c.js","/")
-},{"./pages/test/controllers/TestCtrl":2,"angular":3,"angularRoute":4,"buffer":7,"gzNCgL":10}],2:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_20e5406e.js","/")
+},{"./pages/test/controllers/TestCtrl":2,"angular":3,"angular-route":4,"buffer":7,"gzNCgL":10}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var TestCtrl = function($scope) {
   'use strict';
@@ -41,9 +41,7 @@ module.exports = angular;
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
-require('./angular-route/angular-route.min.js');
-
-module.exports = angularRoute;
+module.exports = require('./angular-route/angular-route.min.js');
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\libs\\angular-route-index.js","/..\\libs")
 },{"./angular-route/angular-route.min.js":5,"buffer":7,"gzNCgL":10}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){

@@ -23,7 +23,7 @@
   },
   "browser": {
     "angular": "./app/libs/angular-index.js",
-    "angularRoute": "./app/libs/angular-route-index.js"
+    "angular-route": "./app/libs/angular-route-index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

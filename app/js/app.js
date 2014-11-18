@@ -2,7 +2,7 @@
 
 /*includes*/
 require('angular');
-require('angularRoute');
+require('angular-route');
 
 /*controllers*/
 var TestCtrl = require('./pages/test/controllers/TestCtrl');

@@ -1,10 +1,7 @@
 var angular = require('angular');
-var app = angular.module('todoApp', [ 'ngRoute' ]);
  
-require('./service/todos');
-require('./service/imprint');
-require('./controller/edit_todo');
-require('./controller/todo');
-require('./controller/todo_list');
-require('./controller/imprint');
-require('./controller/footer');
+var TestCtrl = require('./pages/test/controllers/TestCtrl');
+
+var app = angular.module('testApp', []);
+
+app.controller('TestCtrl', ['$scope', TestCtrl]);

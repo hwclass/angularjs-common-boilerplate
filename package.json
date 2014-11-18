@@ -20,6 +20,10 @@
   "engines": {
     "node": ">=0.10.0"
   },
+  "browser": {
+  "angular": "./app/js/libs/angular/angular-index.js",
+    "angular-route": "./app/js/third-party/angular/angular-route.min.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

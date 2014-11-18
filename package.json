@@ -19,5 +19,34 @@
   },
   "engines": {
     "node": ">=0.10.0"
-  }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "zizigo",
+    "mobile",
+    "web",
+    "angular",
+    "requirejs",
+    "bower",
+    "sass",
+    "gulp"
+  ],
+  "author": "@hwclass, @aekirgil",
+  "contributors": [
+    {
+      "name": "Barış Güler",
+      "email": "harderworking.class@gmail.com"
+    },
+    {
+      "name": "Ahmet Emre Kırğıl",
+      "email": "ahmetemrekirgil@gmail.com"
+    }
+  ],
+  "license": "MIT"
 }

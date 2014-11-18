@@ -1,0 +1,22 @@
+CACHE MANIFEST
+
+# Version 0.1.0
+
+# you can put which file you want to add into offline cache (*.css, *.js, *.html, *.png, *.jpg)
+
+CACHE: 
+/app/css/main.css
+/app/js/app.js/
+/app/js/pages/*.html
+/app/images/*.png
+
+# network means that you can put the files you need to be cached 
+
+NETWORK:
+*
+
+# fallback is serving that file instead of uncached files (like 404 file)
+
+FALLBACK:
+/app/js/pages/offline.html
+/app/images/offline.png

@@ -2,6 +2,7 @@
   "name": "angularjs-common-boilerplate",
   "version": "0.0.1",
   "devDependencies": {
+    "express": "^4.10.2",
     "connect-livereload": "~0.4.0",
     "gulp-concat": "~2.2.0",
     "gulp-embedlr": "~0.5.2",
@@ -21,8 +22,8 @@
     "node": ">=0.10.0"
   },
   "browser": {
-  "angular": "./app/js/libs/angular/angular-index.js",
-    "angular-route": "./app/js/third-party/angular/angular-route.min.js"
+    "angular": "./app/libs/angular-index.js",
+    "angularRoute": "./app/libs/angular-route-index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

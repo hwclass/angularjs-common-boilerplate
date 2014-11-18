@@ -1,9 +1,18 @@
 'use strict';
 
-var angular = require('angular');
- 
+/*includes*/
+require('angular');
+require('angularRoute');
+
+/*controllers*/
 var TestCtrl = require('./pages/test/controllers/TestCtrl');
 
-var app = angular.module('testApp', []);
-
-app.controller('TestCtrl', ['$scope', TestCtrl]);
+angular.module('testApp', ['ngRoute'])
+	.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+		$routeProvider
+			when('/', {
+				templateUrl : '',
+				controller : 'TestCtrl'
+			});
+	}])
+	.controller('TestCtrl', ['$scope', TestCtrl]);

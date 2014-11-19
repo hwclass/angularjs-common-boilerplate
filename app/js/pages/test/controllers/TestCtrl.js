@@ -5,7 +5,7 @@ var TestService = require('../../../services/TestService');
 var TestUtility = require('../../../utilities/TestUtility');
 /*Services*/
 
-var TestCtrl = function($scope, $http) {
+var TestCtrl = function($scope, $http, $cookieStore) {
 
   'use strict';
 
@@ -26,6 +26,9 @@ var TestCtrl = function($scope, $http) {
 
   console.log('TestUtility::Is takinardi value null ? :' + TestUtility.isNull('takinardi'));
   console.log('TestUtility::Is takinardi value undefined ? :' + TestUtility.isUndefined('takinardi'));
+
+  /*set cookies*/
+  $cookieStore.put('cat','tekir');
 
 };
 

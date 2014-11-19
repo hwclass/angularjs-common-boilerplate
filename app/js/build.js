@@ -3,66 +3,68 @@
 'use strict';
 
 module.exports = {
-	cities : [
-	  {
-	  	city : 'Istanbul',
-	  	prefix : 'tr'
-	  },
-	  {
-    	city : 'Berlin',
-    	prefix : 'de'
+  cities : [
+    {
+      city : 'Istanbul',
+      prefix : 'tr'
     },
     {
-    	city : 'Amsterdam',
-    	prefix : 'nl'
+      city : 'Berlin',
+      prefix : 'de'
     },
     {
-    	city : 'Tokyo',
-    	prefix : 'jp'
+      city : 'Amsterdam',
+      prefix : 'nl'
+    },
+    {
+      city : 'Tokyo',
+      prefix : 'jp'
     }
   ],
   getCities : function () {
-  	return this.cities;
+    return this.cities;
   }
 };
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/configs\\TestConfig.js","/configs")
-},{"buffer":9,"gzNCgL":12}],2:[function(require,module,exports){
+},{"buffer":10,"gzNCgL":13}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 (function () {
 
-	'use strict';
+  'use strict';
 
-	/*includes*/
-	require('angular');
-	require('angular-route');
-	require('angular-animate');
+  /*includes*/
+  require('angular');
+  require('angular-route');
+  require('angular-animate');
+  require('angular-module-cookies');
+  /*includes*/
 
-	/*Services*/
-	var TestService = require('./services/TestService');
-	/*Services*/
+  /*Services*/
+  var TestService = require('./services/TestService');
+  /*Services*/
 
-	/*Controllers*/
-	var TestCtrl = require('./pages/test/controllers/TestCtrl');
-	/*Controllers*/
+  /*Controllers*/
+  var TestCtrl = require('./pages/test/controllers/TestCtrl');
+  /*Controllers*/
 
-	angular.module('testApp', ['ngRoute'])
-		.config(['$routeProvider', function($routeProvider) {
-			$routeProvider
-				.when('/test', {
-					templateUrl : './js/pages/test/partials/test.html',
-					controller : 'TestCtrl'
-				})
-				.otherwise({
-           redirectTo: '/'
-        });
-		}])
-		.controller('TestCtrl', ['$scope', '$http', TestCtrl])
-		.factory('TestService', ['$http', TestService]);
+  angular.module('testApp', ['ngRoute', 'ngCookies'])
+    .config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+      .when('/test', {
+      templateUrl : './js/pages/test/partials/test.html',
+      controller : 'TestCtrl'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+  }])
+  .controller('TestCtrl', ['$scope', '$http', '$cookieStore', TestCtrl])
+  .factory('TestService', ['$http', TestService]);
 
 })();
 
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_ffcfd02e.js","/")
-},{"./pages/test/controllers/TestCtrl":3,"./services/TestService":4,"angular":8,"angular-animate":6,"angular-route":7,"buffer":9,"gzNCgL":12}],3:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_dfcf047f.js","/")
+},{"./pages/test/controllers/TestCtrl":3,"./services/TestService":4,"angular":9,"angular-animate":6,"angular-module-cookies":7,"angular-route":8,"buffer":10,"gzNCgL":13}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 
 /*Services*/
@@ -71,7 +73,7 @@ var TestService = require('../../../services/TestService');
 var TestUtility = require('../../../utilities/TestUtility');
 /*Services*/
 
-var TestCtrl = function($scope, $http) {
+var TestCtrl = function($scope, $http, $cookieStore) {
 
   'use strict';
 
@@ -84,55 +86,48 @@ var TestCtrl = function($scope, $http) {
   console.dir(cities);
 
   for (var cityCounter = 0, len = cities.length; cityCounter < len; cityCounter++) {
-  	TestService($http).getWeather(cities[cityCounter].city, cities[cityCounter].prefix, function(data) {
-			console.dir(data);
-			$scope.cities.push({name : data.name,  description : data.weather[0].description, icon : "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"});
-		});
+    TestService($http).getWeather(cities[cityCounter].city, cities[cityCounter].prefix, function(data) {
+      console.dir(data);
+      $scope.cities.push({name : data.name,  description : data.weather[0].description, icon : "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"});
+    });
   }
 
   console.log('TestUtility::Is takinardi value null ? :' + TestUtility.isNull('takinardi'));
   console.log('TestUtility::Is takinardi value undefined ? :' + TestUtility.isUndefined('takinardi'));
 
+  /*set cookies*/
+  $cookieStore.put('cat','tekir');
+
 };
 
 module.exports = TestCtrl;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/pages\\test\\controllers\\TestCtrl.js","/pages\\test\\controllers")
-},{"../../../configs/TestConfig":1,"../../../services/TestService":4,"../../../utilities/TestUtility":5,"buffer":9,"gzNCgL":12}],4:[function(require,module,exports){
+},{"../../../configs/TestConfig":1,"../../../services/TestService":4,"../../../utilities/TestUtility":5,"buffer":10,"gzNCgL":13}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var TestService = function ($http) {
-
 	return (function () {
-
 		return {
-
 			getWeather : function (city, prefix, callback) {
-				
 				'use strict';
-				
 				var currentUrl = "http://api.openweathermap.org/data/2.5/weather?q="+city+","+prefix;
-				
 				/*
 				* $http({method: 'GET', url: currentUrl, headers: {'test': 'WEB QWxhZGRpbjpvcGVuIHNlc2FtZQ'}})
 				*/
 				$http({method: 'GET', url: currentUrl}).
-				  success(function(data, status, headers, config) {
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
+					success(function(data, status, headers, config) {
+						callback(data);
+					}).
+					error(function(data, status, headers, config) {
+						console.log(data);
 				});
-
 			}
-
 		}
-
 	})();
-
 };
 
 module.exports = TestService;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\TestService.js","/services")
-},{"buffer":9,"gzNCgL":12}],5:[function(require,module,exports){
+},{"buffer":10,"gzNCgL":13}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -145,7 +140,7 @@ module.exports = {
 	}
 };
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/utilities\\TestUtility.js","/utilities")
-},{"buffer":9,"gzNCgL":12}],6:[function(require,module,exports){
+},{"buffer":10,"gzNCgL":13}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.3.3
@@ -2285,7 +2280,215 @@ angular.module('ngAnimate', ['ng'])
 })(window, window.angular);
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular-animate\\angular-animate.js","/..\\..\\node_modules\\angular-animate")
-},{"buffer":9,"gzNCgL":12}],7:[function(require,module,exports){
+},{"buffer":10,"gzNCgL":13}],7:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+/**
+ * @license AngularJS v1.2.19
+ * (c) 2010-2014 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+(function(window, angular, undefined) {'use strict';
+
+/**
+ * @ngdoc module
+ * @name ngCookies
+ * @description
+ *
+ * # ngCookies
+ *
+ * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies.
+ *
+ *
+ * <div doc-module-components="ngCookies"></div>
+ *
+ * See {@link ngCookies.$cookies `$cookies`} and
+ * {@link ngCookies.$cookieStore `$cookieStore`} for usage.
+ */
+
+
+angular.module('ngCookies', ['ng']).
+  /**
+   * @ngdoc service
+   * @name $cookies
+   *
+   * @description
+   * Provides read/write access to browser's cookies.
+   *
+   * Only a simple Object is exposed and by adding or removing properties to/from this object, new
+   * cookies are created/deleted at the end of current $eval.
+   * The object's properties can only be strings.
+   *
+   * Requires the {@link ngCookies `ngCookies`} module to be installed.
+   *
+   * @example
+   *
+   * ```js
+   * function ExampleController($cookies) {
+   *   // Retrieving a cookie
+   *   var favoriteCookie = $cookies.myFavorite;
+   *   // Setting a cookie
+   *   $cookies.myFavorite = 'oatmeal';
+   * }
+   * ```
+   */
+   factory('$cookies', ['$rootScope', '$browser', function ($rootScope, $browser) {
+      var cookies = {},
+          lastCookies = {},
+          lastBrowserCookies,
+          runEval = false,
+          copy = angular.copy,
+          isUndefined = angular.isUndefined;
+
+      //creates a poller fn that copies all cookies from the $browser to service & inits the service
+      $browser.addPollFn(function() {
+        var currentCookies = $browser.cookies();
+        if (lastBrowserCookies != currentCookies) { //relies on browser.cookies() impl
+          lastBrowserCookies = currentCookies;
+          copy(currentCookies, lastCookies);
+          copy(currentCookies, cookies);
+          if (runEval) $rootScope.$apply();
+        }
+      })();
+
+      runEval = true;
+
+      //at the end of each eval, push cookies
+      //TODO: this should happen before the "delayed" watches fire, because if some cookies are not
+      //      strings or browser refuses to store some cookies, we update the model in the push fn.
+      $rootScope.$watch(push);
+
+      return cookies;
+
+
+      /**
+       * Pushes all the cookies from the service to the browser and verifies if all cookies were
+       * stored.
+       */
+      function push() {
+        var name,
+            value,
+            browserCookies,
+            updated;
+
+        //delete any cookies deleted in $cookies
+        for (name in lastCookies) {
+          if (isUndefined(cookies[name])) {
+            $browser.cookies(name, undefined);
+          }
+        }
+
+        //update all cookies updated in $cookies
+        for(name in cookies) {
+          value = cookies[name];
+          if (!angular.isString(value)) {
+            value = '' + value;
+            cookies[name] = value;
+          }
+          if (value !== lastCookies[name]) {
+            $browser.cookies(name, value);
+            updated = true;
+          }
+        }
+
+        //verify what was actually stored
+        if (updated){
+          updated = false;
+          browserCookies = $browser.cookies();
+
+          for (name in cookies) {
+            if (cookies[name] !== browserCookies[name]) {
+              //delete or reset all cookies that the browser dropped from $cookies
+              if (isUndefined(browserCookies[name])) {
+                delete cookies[name];
+              } else {
+                cookies[name] = browserCookies[name];
+              }
+              updated = true;
+            }
+          }
+        }
+      }
+    }]).
+
+
+  /**
+   * @ngdoc service
+   * @name $cookieStore
+   * @requires $cookies
+   *
+   * @description
+   * Provides a key-value (string-object) storage, that is backed by session cookies.
+   * Objects put or retrieved from this storage are automatically serialized or
+   * deserialized by angular's toJson/fromJson.
+   *
+   * Requires the {@link ngCookies `ngCookies`} module to be installed.
+   *
+   * @example
+   *
+   * ```js
+   * function ExampleController($cookies) {
+   *   // Put cookie
+   *   $cookieStore.put('myFavorite','oatmeal');
+   *   // Get cookie
+   *   var favoriteCookie = $cookieStore.get('myFavorite');
+   *   // Removing a cookie
+   *   $cookieStore.remove('myFavorite');
+   * }
+   * ```
+   */
+   factory('$cookieStore', ['$cookies', function($cookies) {
+
+      return {
+        /**
+         * @ngdoc method
+         * @name $cookieStore#get
+         *
+         * @description
+         * Returns the value of given cookie key
+         *
+         * @param {string} key Id to use for lookup.
+         * @returns {Object} Deserialized cookie value.
+         */
+        get: function(key) {
+          var value = $cookies[key];
+          return value ? angular.fromJson(value) : value;
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookieStore#put
+         *
+         * @description
+         * Sets a value for given cookie key
+         *
+         * @param {string} key Id for the `value`.
+         * @param {Object} value Value to be stored.
+         */
+        put: function(key, value) {
+          $cookies[key] = angular.toJson(value);
+        },
+
+        /**
+         * @ngdoc method
+         * @name $cookieStore#remove
+         *
+         * @description
+         * Remove given cookie
+         *
+         * @param {string} key Id of the key-value pair to delete.
+         */
+        remove: function(key) {
+          delete $cookies[key];
+        }
+      };
+
+    }]);
+
+
+})(window, window.angular);
+
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular-module-cookies\\angular-cookies.js","/..\\..\\node_modules\\angular-module-cookies")
+},{"buffer":10,"gzNCgL":13}],8:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.2.17-build.163+sha.fafcd62
@@ -3216,7 +3419,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 })(window, window.angular);
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular-route\\angular-route.js","/..\\..\\node_modules\\angular-route")
-},{"buffer":9,"gzNCgL":12}],8:[function(require,module,exports){
+},{"buffer":10,"gzNCgL":13}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.3.3
@@ -28970,7 +29173,7 @@ var styleDirective = valueFn({
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular\\angular.js","/..\\..\\node_modules\\angular")
-},{"buffer":9,"gzNCgL":12}],9:[function(require,module,exports){
+},{"buffer":10,"gzNCgL":13}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
  * The buffer module from node.js, for the browser.
@@ -30083,7 +30286,7 @@ function assert (test, message) {
 }
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\buffer\\index.js","/..\\..\\node_modules\\browserify\\node_modules\\buffer")
-},{"base64-js":10,"buffer":9,"gzNCgL":12,"ieee754":11}],10:[function(require,module,exports){
+},{"base64-js":11,"buffer":10,"gzNCgL":13,"ieee754":12}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
@@ -30207,7 +30410,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib\\b64.js","/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib")
-},{"buffer":9,"gzNCgL":12}],11:[function(require,module,exports){
+},{"buffer":10,"gzNCgL":13}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
@@ -30295,7 +30498,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
 };
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754\\index.js","/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754")
-},{"buffer":9,"gzNCgL":12}],12:[function(require,module,exports){
+},{"buffer":10,"gzNCgL":13}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 // shim for using process in browser
 
@@ -30362,4 +30565,4 @@ process.chdir = function (dir) {
 };
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\process\\browser.js","/..\\..\\node_modules\\browserify\\node_modules\\process")
-},{"buffer":9,"gzNCgL":12}]},{},[2])
+},{"buffer":10,"gzNCgL":13}]},{},[2])

@@ -44,7 +44,7 @@ gulp.task('browserify', function() {
     debug: false
   }))
   // Bundle to a single file
-  .pipe(concat('bundle.js'))
+  .pipe(concat('build.js'))
   // Output it to our dist folder
   .pipe(gulp.dest('app/js'));
 });

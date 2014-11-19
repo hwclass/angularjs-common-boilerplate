@@ -1,2 +1,5 @@
 <p>{{title}}</p>
-<p>{{name}} - {{description}}</p>
+<p ng-repeat="city in cities">
+	<span>{{city.name}} - {{city.description}}</span>
+	<img src="{{city.icon}}"/>
+</p>

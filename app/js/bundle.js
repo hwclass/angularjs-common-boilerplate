@@ -33,7 +33,7 @@
 
 })();
 
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6eaffaf4.js","/")
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_c66c1d4.js","/")
 },{"./pages/test/controllers/TestCtrl":2,"./services/TestService":3,"angular":7,"angular-animate":5,"angular-route":6,"buffer":8,"gzNCgL":11}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 
@@ -46,11 +46,13 @@ var TestCtrl = function($scope, $http) {
 
   'use strict';
 
-  $scope.testVar = 'We are up and running from a required module!';
+  $scope.title = 'Weather';
 
-  console.dir(TestService($http, function(data) {
+  TestService($http).getWeather('Istanbul', 'tr', function(data) {
   	console.dir(data);
-  }));
+  	$scope.name = data.name;
+  	$scope.description = data.weather[0]['description'];
+  });
 
   console.log(testUtility.isNull('takinardi'));
 
@@ -60,17 +62,24 @@ module.exports = TestCtrl;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/pages\\test\\controllers\\TestCtrl.js","/pages\\test\\controllers")
 },{"../../../services/TestService":3,"../../../utilities/test":4,"buffer":8,"gzNCgL":11}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-var TestService = function ($http, callback) {
+var TestService = function ($http) {
 	
 	'use strict';
 
-	$http.get('http://api.openweathermap.org/data/2.5/weather?q=Istanbul,tr').
-	  success(function(data, status, headers, config) {
-	    callback(data);
-	  }).
-	  error(function(data, status, headers, config) {
-	    console.log(data);
-	});
+	return (function () {
+		return {
+			getWeather : function (city, prefix, callback) {
+				var currentUrl = "http://api.openweathermap.org/data/2.5/weather?q="+city+","+prefix;
+				$http.get(currentUrl).
+				  success(function(data, status, headers, config) {
+				    callback(data);
+				  }).
+				  error(function(data, status, headers, config) {
+				    console.log(data);
+				});
+			}
+		}
+	})();
 
 };
 

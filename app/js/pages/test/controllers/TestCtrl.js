@@ -8,11 +8,13 @@ var TestCtrl = function($scope, $http) {
 
   'use strict';
 
-  $scope.testVar = 'We are up and running from a required module!';
+  $scope.title = 'Weather';
 
-  console.dir(TestService($http, function(data) {
+  TestService($http).getWeather('Istanbul', 'tr', function(data) {
   	console.dir(data);
-  }));
+  	$scope.name = data.name;
+  	$scope.description = data.weather[0]['description'];
+  });
 
   console.log(testUtility.isNull('takinardi'));
 

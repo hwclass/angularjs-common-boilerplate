@@ -61,7 +61,7 @@ module.exports = {
 
 })();
 
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b88d3bdc.js","/")
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_ffcfd02e.js","/")
 },{"./pages/test/controllers/TestCtrl":3,"./services/TestService":4,"angular":8,"angular-animate":6,"angular-route":7,"buffer":9,"gzNCgL":12}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 
@@ -100,22 +100,32 @@ module.exports = TestCtrl;
 },{"../../../configs/TestConfig":1,"../../../services/TestService":4,"../../../utilities/TestUtility":5,"buffer":9,"gzNCgL":12}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var TestService = function ($http) {
-	
-	'use strict';
 
 	return (function () {
+
 		return {
+
 			getWeather : function (city, prefix, callback) {
+				
+				'use strict';
+				
 				var currentUrl = "http://api.openweathermap.org/data/2.5/weather?q="+city+","+prefix;
-				$http.get(currentUrl).
+				
+				/*
+				* $http({method: 'GET', url: currentUrl, headers: {'test': 'WEB QWxhZGRpbjpvcGVuIHNlc2FtZQ'}})
+				*/
+				$http({method: 'GET', url: currentUrl}).
 				  success(function(data, status, headers, config) {
 				    callback(data);
 				  }).
 				  error(function(data, status, headers, config) {
 				    console.log(data);
 				});
+
 			}
+
 		}
+
 	})();
 
 };

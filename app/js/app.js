@@ -7,7 +7,13 @@
 	require('angular-route');
 	require('angular-animate');
 
+	/*Services*/
+	var TestService = require('./services/TestService');
+	/*Services*/
+
+	/*Controllers*/
 	var TestCtrl = require('./pages/test/controllers/TestCtrl');
+	/*Controllers*/
 
 	angular.module('testApp', ['ngRoute'])
 		.config(['$routeProvider', function($routeProvider) {
@@ -20,6 +26,7 @@
            redirectTo: '/'
         });
 		}])
-		.controller('TestCtrl', ['$scope', TestCtrl]);
+		.controller('TestCtrl', ['$scope', '$http', TestCtrl])
+		.factory('TestService', ['$http', TestService]);
 
 })();

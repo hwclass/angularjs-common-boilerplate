@@ -15,7 +15,7 @@
 		.config(['$routeProvider', function($routeProvider) {
 			$routeProvider
 				.when('/test', {
-					templateUrl : './js/pages/test/partials/test.html',
+					templateUrl : './app/core/pages/test/partials/test.html',
 					controller : 'TestCtrl'
 				})
 				.otherwise({
@@ -26,7 +26,7 @@
 
 })();
 
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_35cb6bb5.js","/")
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_5c4f90e2.js","/")
 },{"./pages/test/controllers/TestCtrl":2,"angular":5,"angular-animate":3,"angular-route":4,"buffer":6,"gzNCgL":9}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var TestCtrl = function($scope) {

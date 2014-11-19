@@ -1,25 +1,25 @@
 'use strict';
 
 module.exports = {
-	cities : [
-	  {
-	  	city : 'Istanbul',
-	  	prefix : 'tr'
-	  },
-	  {
-    	city : 'Berlin',
-    	prefix : 'de'
+  cities : [
+    {
+      city : 'Istanbul',
+      prefix : 'tr'
     },
     {
-    	city : 'Amsterdam',
-    	prefix : 'nl'
+      city : 'Berlin',
+      prefix : 'de'
     },
     {
-    	city : 'Tokyo',
-    	prefix : 'jp'
+      city : 'Amsterdam',
+      prefix : 'nl'
+    },
+    {
+      city : 'Tokyo',
+      prefix : 'jp'
     }
   ],
   getCities : function () {
-  	return this.cities;
+    return this.cities;
   }
 };

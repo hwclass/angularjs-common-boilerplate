@@ -18,10 +18,10 @@ var TestCtrl = function($scope, $http) {
   console.dir(cities);
 
   for (var cityCounter = 0, len = cities.length; cityCounter < len; cityCounter++) {
-  	TestService($http).getWeather(cities[cityCounter].city, cities[cityCounter].prefix, function(data) {
-			console.dir(data);
-			$scope.cities.push({name : data.name,  description : data.weather[0].description, icon : "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"});
-		});
+    TestService($http).getWeather(cities[cityCounter].city, cities[cityCounter].prefix, function(data) {
+      console.dir(data);
+      $scope.cities.push({name : data.name,  description : data.weather[0].description, icon : "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"});
+    });
   }
 
   console.log('TestUtility::Is takinardi value null ? :' + TestUtility.isNull('takinardi'));

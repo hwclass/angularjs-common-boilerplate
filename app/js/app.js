@@ -1,18 +1,25 @@
-'use strict';
+(function () {
 
-/*includes*/
-require('angular');
-require('angular-route');
+	'use strict';
 
-/*controllers*/
-var TestCtrl = require('./pages/test/controllers/TestCtrl');
+	/*includes*/
+	require('angular');
+	require('angular-route');
+	require('angular-animate');
 
-angular.module('testApp', ['ngRoute'])
-	.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-		$routeProvider
-			when('/', {
-				templateUrl : '',
-				controller : 'TestCtrl'
-			});
-	}])
-	.controller('TestCtrl', ['$scope', TestCtrl]);
+	var TestCtrl = require('./pages/test/controllers/TestCtrl');
+
+	angular.module('testApp', ['ngRoute'])
+		.config(['$routeProvider', function($routeProvider) {
+			$routeProvider
+				.when('/test', {
+					templateUrl : './js/pages/test/partials/test.html',
+					controller : 'TestCtrl'
+				})
+				.otherwise({
+           redirectTo: '/'
+        });
+		}])
+		.controller('TestCtrl', ['$scope', TestCtrl]);
+
+})();

@@ -49,7 +49,7 @@ gulp.task('browserify', function() {
   .pipe(gulp.dest('app/js'));
 });
 
-gulp.task('watch', ['lint'], function() {
+gulp.task('watch', ['lint', 'browserify'], function() {
   // Start webserver
   server.listen(serverport);
   // Start live reload

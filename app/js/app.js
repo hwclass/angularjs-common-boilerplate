@@ -7,6 +7,7 @@
   require('angular-route');
   require('angular-animate');
   require('angular-module-cookies');
+
   /*includes*/
 
   /*Services*/

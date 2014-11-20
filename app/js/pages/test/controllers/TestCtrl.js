@@ -3,13 +3,14 @@
 var TestConfig = require('../../../configs/TestConfig');
 var TestService = require('../../../services/TestService');
 var TestUtility = require('../../../utilities/TestUtility');
+var $ = require('jquery');
 /*Services*/
 
 var TestCtrl = function($scope, $http, $cookieStore) {
 
   'use strict';
 
-  $scope.title = 'Weather Situations in the Cities';
+  $scope.title = TestConfig.getTitle();
 
   $scope.cities = [];
 
@@ -29,6 +30,10 @@ var TestCtrl = function($scope, $http, $cookieStore) {
 
   /*set cookies*/
   $cookieStore.put('cat','tekir');
+
+  var body = $('body');
+
+  console.log(body);
 
 };
 

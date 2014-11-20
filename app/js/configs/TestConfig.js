@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  title : 'Weather Situations in the Cities',
   cities : [
     {
       city : 'Istanbul',
@@ -17,8 +18,15 @@ module.exports = {
     {
       city : 'Tokyo',
       prefix : 'jp'
+    },
+    {
+      city : 'Van',
+      prefix : 'tr'
     }
   ],
+  getTitle : function () {
+    return this.title;
+  },
   getCities : function () {
     return this.cities;
   }

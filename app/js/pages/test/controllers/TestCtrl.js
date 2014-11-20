@@ -3,8 +3,11 @@
 var TestConfig = require('../../../configs/TestConfig');
 var TestService = require('../../../services/TestService');
 var TestUtility = require('../../../utilities/TestUtility');
-var $ = require('jquery');
 /*Services*/
+
+/*Third-Parties*/
+var $ = require('jquery');
+/*Third-Parties*/
 
 var TestCtrl = function($scope, $http, $cookieStore) {
 

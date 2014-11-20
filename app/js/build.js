@@ -5,26 +5,11 @@
 module.exports = {
   title : 'Weather Situations in the Cities',
   cities : [
-    {
-      city : 'Istanbul',
-      prefix : 'tr'
-    },
-    {
-      city : 'Berlin',
-      prefix : 'de'
-    },
-    {
-      city : 'Amsterdam',
-      prefix : 'nl'
-    },
-    {
-      city : 'Tokyo',
-      prefix : 'jp'
-    },
-    {
-      city : 'Van',
-      prefix : 'tr'
-    }
+    {city : 'Istanbul', prefix : 'tr'},
+    {city : 'Berlin', prefix : 'de'},
+    {city : 'Amsterdam', prefix : 'nl'},
+    {city : 'Tokyo', prefix : 'jp'},
+    {city : 'Van', prefix : 'tr'}
   ],
   getTitle : function () {
     return this.title;
@@ -72,7 +57,7 @@ module.exports = {
 
 })();
 
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_702b2c23.js","/")
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_1e98bee1.js","/")
 },{"./pages/test/controllers/TestCtrl":3,"./services/TestService":4,"angular":9,"angular-animate":6,"angular-module-cookies":7,"angular-route":8,"buffer":10,"gzNCgL":13}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 
@@ -80,8 +65,11 @@ module.exports = {
 var TestConfig = require('../../../configs/TestConfig');
 var TestService = require('../../../services/TestService');
 var TestUtility = require('../../../utilities/TestUtility');
-var $ = require('jquery');
 /*Services*/
+
+/*Third-Parties*/
+var $ = require('jquery');
+/*Third-Parties*/
 
 var TestCtrl = function($scope, $http, $cookieStore) {
 

@@ -24,8 +24,8 @@ var TestCtrl = function($scope, $http, $cookieStore) {
     });
   }
 
-  console.log('TestUtility::Is takinardi value null ? :' + TestUtility.isNull('takinardi'));
-  console.log('TestUtility::Is takinardi value undefined ? :' + TestUtility.isUndefined('takinardi'));
+  console.log('TestUtility::Is testApp string value null ? :' + TestUtility.isNull('testApp'));
+  console.log('TestUtility::Is testApp string value undefined ? :' + TestUtility.isUndefined('testApp'));
 
   /*set cookies*/
   $cookieStore.put('cat','tekir');

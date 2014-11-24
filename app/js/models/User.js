@@ -2,9 +2,15 @@
 * Model::User
 */
 
-var User = new function (username, password, basketId) {
+var User = function (userName, passWord, name, surName, address, basketId) {
 	
 	this.userName = userName;
+
+	this.name = name;
+
+	this.surName = surName;
+
+	this.address = address;
 	
 	this.passWord = passWord;
 
@@ -23,3 +29,5 @@ var User = new function (username, password, basketId) {
 	};
 
 };
+
+module.exports = User;

@@ -1,13 +1,14 @@
-
-/*Services*/
-var TestConfig = require('../../../configs/TestConfig');
-var TestService = require('../../../services/TestService');
-var TestUtility = require('../../../utilities/TestUtility');
-/*Services*/
-
 /*Third-Parties*/
 var $ = require('jquery');
 /*Third-Parties*/
+
+/*Services*/
+var TestConfig = require('../../../config/Test');
+var UrlConfig = require('../../../config/Url');
+var TestService = require('../../../services/TestService');
+var TestUtility = require('../../../utilities/TestUtility');
+var User = require('../../../models/User');
+/*Services*/
 
 var TestCtrl = function($scope, $http, $cookieStore) {
 
@@ -37,6 +38,20 @@ var TestCtrl = function($scope, $http, $cookieStore) {
   var body = $('body');
 
   console.log(body);
+
+  console.log('Login Url : ' + UrlConfig.getUserLoginUrl());
+
+  console.dir(User);
+
+  var testUser = new User('', '', 'John', 'Doe', 'World', '');
+
+  console.log(testUser.name);
+  console.log(testUser.surName);
+  console.log(testUser.address);
+
+  $scope.name = testUser.name;
+  $scope.surName = testUser.surName;
+  $scope.address = testUser.address;
 
 };
 

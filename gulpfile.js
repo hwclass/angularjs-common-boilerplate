@@ -26,7 +26,7 @@ server.all('/*', function(req, res) {
 });
 
 // Dev task
-gulp.task('dev', ['browserify'], function() { });
+gulp.task('dev', ['build'], function() { });
 
 // JSHint task
 gulp.task('lint', function() {
@@ -36,7 +36,7 @@ gulp.task('lint', function() {
 });
 
 // Browserify task
-gulp.task('browserify', function() {
+gulp.task('build', function() {
   // Single point of entry (make sure not to src ALL your files, browserify will figure it out)
   gulp.src(['app/js/app.js'])
   .pipe(browserify({
@@ -49,8 +49,8 @@ gulp.task('browserify', function() {
   .pipe(gulp.dest('app/js'));
 });
 
-gulp.task('watch', ['lint', 'browserify'], function() {
-  // Start webserver
+gulp.task('watch', ['lint'], function() {
+  gulp.watch('app/js/**/*.js', ['build']);
   server.listen(serverport);
   // Start live reload
   refresh.listen(livereloadport);

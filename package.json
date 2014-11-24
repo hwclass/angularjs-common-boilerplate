@@ -29,16 +29,6 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "browser": {
-    "jquery": "./node_modules/jquery/dist/jquery.min.js"
-  },
-  "browserify-shim" : {
-    "jquery": "$"
-  },
-  "jquery": {
-    "path": "./node_modules/jquery/dist/jquery.min.js",
-    "exports": "$"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -47,7 +37,6 @@
     "url": ""
   },
   "keywords": [
-    "zizigo",
     "mobile",
     "web",
     "angular",

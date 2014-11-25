@@ -7,8 +7,8 @@ var Test = function () {
 };
 
 module.exports = Test;
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/components\\Test.js","/components")
-},{"buffer":13,"gzNCgL":16}],2:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/component\\Test.js","/component")
+},{"buffer":14,"gzNCgL":17}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -28,8 +28,8 @@ module.exports = {
     return this.cities;
   }
 };
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/config\\Test.js","/config")
-},{"buffer":13,"gzNCgL":16}],3:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/config\\test.js","/config")
+},{"buffer":14,"gzNCgL":17}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -103,68 +103,50 @@ module.exports = (function() {
 	};
 
 })();
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/config\\Url.js","/config")
-},{"buffer":13,"gzNCgL":16}],4:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/config\\url.js","/config")
+},{"buffer":14,"gzNCgL":17}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-// Copyright 2014 Markafoni. All Rights Reserved.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS-IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-/**
- * @fileoverview Generic builder class to build and modify DOM elements.
- */
+/*
+ * Main app initializer for the whole app as a mediator
+*/
 
 (function () {
 
   'use strict';
 
-  /*includes*/
+  /*===MODULES===*/
   require('angular');
   require('angular-route');
   require('angular-animate');
   require('angular-module-cookies');
-  /*includes*/
 
-  /*Services*/
-  var TestService = require('./services/TestService');
-  /*Services*/
+  /*===SERVICES===*/
+  var testService = require('./service/Test');
 
-  /*Controllers*/
-  var TestCtrl = require('./pages/test/controllers/TestCtrl');
-  /*Controllers*/
+  /*===CONTROLLERS===*/
+  var testCtrl = require('./section/test/controller/test');
 
-  /*Directives*/
-  var Test = require('./components/Test');
-  /*Directives*/
+  /*===DIRECTIVES===*/
+  var testComponent = require('./component/Test');
 
-  angular.module('testApp', ['ngRoute', 'ngCookies'])
+  angular.module('AngularCommonApp', ['ngRoute', 'ngCookies'])
     .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/test', {
-      templateUrl : './js/pages/test/partials/test.html',
-      controller : 'TestCtrl'
+        templateUrl : './js/section/test/partial/test.html',
+        controller : 'testCtrl'
     })
     .otherwise({
       redirectTo: '/'
     });
   }])
-  .controller('TestCtrl', ['$scope', '$http', '$cookieStore', TestCtrl])
-  .factory('TestService', ['$http', TestService])
-  .directive('test', [Test]);
+  .controller('testCtrl', ['$scope', '$http', '$cookieStore', testCtrl])
+  .factory('testService', ['$http', testService])
+  .directive('testComponent', [testComponent]);
 
 })();
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_6fb89320.js","/")
-},{"./components/Test":1,"./pages/test/controllers/TestCtrl":6,"./services/TestService":7,"angular":12,"angular-animate":9,"angular-module-cookies":10,"angular-route":11,"buffer":13,"gzNCgL":16}],5:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_806b3d1d.js","/")
+},{"./component/Test":1,"./section/test/controller/test":6,"./service/Test":7,"angular":13,"angular-animate":10,"angular-module-cookies":11,"angular-route":12,"buffer":14,"gzNCgL":17}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*
 * Model::User
@@ -199,21 +181,32 @@ var User = function (userName, passWord, name, surName, address, basketId) {
 };
 
 module.exports = User;
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/models\\User.js","/models")
-},{"buffer":13,"gzNCgL":16}],6:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/model\\User.js","/model")
+},{"buffer":14,"gzNCgL":17}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-/*Third-Parties*/
+'use strict';
+
+/*===CONFIGS===*/
+var UrlConfig = require('../../../config/url');
+var TestConfig = require('../../../config/test');
+
+/*===MODELS===*/
+var User = require('../../../model/User');
+
+/*===SERVICES===*/
+var TestService = require('../../../service/Test');
+var UserService = require('../../../service/User');
+
+/*===UTILITY===*/
+var TestUtility = require('../../../utility/Test');
+
+/*===3RD PARTIES===*/
 var $ = require('jquery');
-/*Third-Parties*/
 
-/*Services*/
-var TestConfig = require('../../../config/Test');
-var UrlConfig = require('../../../config/Url');
-var TestService = require('../../../services/TestService');
-var TestUtility = require('../../../utilities/TestUtility');
-var User = require('../../../models/User');
-/*Services*/
-
+/**
+ * @name TestCtrl
+ * @desc Test application controller
+ */
 var TestCtrl = function($scope, $http, $cookieStore) {
 
   'use strict';
@@ -231,12 +224,11 @@ var TestCtrl = function($scope, $http, $cookieStore) {
       console.dir(data);
       $scope.cities.push({name : data.name,  description : data.weather[0].description, icon : "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"});
     });
-  }
+  };
 
   console.log('TestUtility::Is testApp string value null ? :' + TestUtility.isNull('testApp'));
   console.log('TestUtility::Is testApp string value undefined ? :' + TestUtility.isUndefined('testApp'));
 
-  /*set cookies*/
   $cookieStore.put('cat','tekir');
 
   var body = $('body');
@@ -257,15 +249,33 @@ var TestCtrl = function($scope, $http, $cookieStore) {
   $scope.surName = testUser.surName;
   $scope.address = testUser.address;
 
+  UserService($http).testRequest(function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir(data);
+    };
+  });
+
 };
 
 module.exports = TestCtrl;
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/pages\\test\\controllers\\TestCtrl.js","/pages\\test\\controllers")
-},{"../../../config/Test":2,"../../../config/Url":3,"../../../models/User":5,"../../../services/TestService":7,"../../../utilities/TestUtility":8,"buffer":13,"gzNCgL":16,"jquery":17}],7:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/section\\test\\controller\\test.js","/section\\test\\controller")
+},{"../../../config/test":2,"../../../config/url":3,"../../../model/User":5,"../../../service/Test":7,"../../../service/User":8,"../../../utility/Test":9,"buffer":14,"gzNCgL":17,"jquery":18}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+/**
+ * @name TestService
+ * @desc Test application service
+ */
 var TestService = function ($http) {
 	return (function () {
 		return {
+			/**
+		   * @name getWeather
+		   * @desc Does something awesome
+		   * @param {String} city - City value
+		   * @param {String} prefix - Prefix value
+		   * @param {Function} callback - Callback after response returns
+		   * @returns {undefined}
+		   */
 			getWeather : function (city, prefix, callback) {
 				'use strict';
 				var currentUrl = "http://api.openweathermap.org/data/2.5/weather?q="+city+","+prefix;
@@ -285,8 +295,134 @@ var TestService = function ($http) {
 };
 
 module.exports = TestService;
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/services\\TestService.js","/services")
-},{"buffer":13,"gzNCgL":16}],8:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/service\\Test.js","/service")
+},{"buffer":14,"gzNCgL":17}],8:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+/**
+ * @name UserService
+ * @desc UserService service
+ */
+var UserService = function ($http) {
+	
+	return (function () {
+		
+		return {
+
+			testRequest : function (callback) {
+				$http({
+					method : 'GET',
+					url : 'http://api.openweathermap.org/data/2.5/weather?q=London,uk'
+				}).
+					success(function (data, status, headers, config) {
+						callback(data)
+					}).
+					error(function (data, status, headers, config) {
+						console.log(data);
+				});
+			},
+
+			/*
+			* Phase 1.V3 - 2.1 Post User Login
+			*/
+			logIn : function (userName, password, basketId, callback) {
+				$http({
+					method : 'GET', 
+					url : 'url', 
+					headers : {'sessionKey' : sessionKey}
+				}).
+				  success(function(data, status, headers, config) {
+				    callback(data);
+				  }).
+				  error(function(data, status, headers, config) {
+				    console.log(data);
+				});
+			},
+
+			/*
+			* Phase 1.V3 - 2.2 Post User Logout
+			*/
+			logOut : function (sessionKey, callback) {
+				$http({
+					method : 'POST', 
+					url : 'url', 
+					headers : {'sessionKey' : sessionKey}
+				}).
+				  success(function(data, status, headers, config) {
+				    callback(data);
+				  }).
+				  error(function(data, status, headers, config) {
+				    console.log(data);
+				});
+			},
+
+			/*
+			* Phase 1.V3 - 2.3 Get User List
+			*/
+			getUserInfo : function (sessionKey, callback) {
+				$http({
+					method : 'GET', 
+					url : 'url', 
+					headers : {'sessionKey' : sessionKey}
+				}).
+				  success(function(data, status, headers, config) {
+				    callback(data);
+				  }).
+				  error(function(data, status, headers, config) {
+				    console.log(data);
+				});
+			},
+
+			/*
+			* Phase 1.V3 - 2.4 Get User Detail
+			*/
+			getUserDetail : function (sessionKey, callback) {
+				$http({
+					method : 'GET', 
+					url : 'url', 
+					headers : {'sessionKey' : sessionKey}
+				}).
+				  success(function(data, status, headers, config) {
+				    callback(data);
+				  }).
+				  error(function(data, status, headers, config) {
+				    console.log(data);
+				});
+			},
+
+			/*
+			* Phase 1.V3 - 2.5 Patch User Info
+			*/
+			updateUserInfo : function (sessionKey, firstName, lastName, email, birthday, gender, callback) {
+				$http({
+					method : 'POST', 
+					url : 'url', 
+					headers : {
+						session_key: sessionKey,
+						first_name : firstName,
+						last_name : lastName,
+						email : email,
+						birthday : birthday,
+						gender : gender	
+					}
+				}).
+				  success(function(data, status, headers, config) {
+				    callback(data);
+				  }).
+				  error(function(data, status, headers, config) {
+				    console.log(data);
+				});
+			}
+
+
+		}
+
+	})();
+
+};
+
+module.exports = UserService;
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/service\\User.js","/service")
+},{"buffer":14,"gzNCgL":17}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -298,8 +434,8 @@ module.exports = {
 		return (typeof obj === 'undefined' ? true : false);
 	}
 };
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/utilities\\TestUtility.js","/utilities")
-},{"buffer":13,"gzNCgL":16}],9:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/utility\\Test.js","/utility")
+},{"buffer":14,"gzNCgL":17}],10:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.3.3
@@ -2439,7 +2575,7 @@ angular.module('ngAnimate', ['ng'])
 })(window, window.angular);
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular-animate\\angular-animate.js","/..\\..\\node_modules\\angular-animate")
-},{"buffer":13,"gzNCgL":16}],10:[function(require,module,exports){
+},{"buffer":14,"gzNCgL":17}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.2.19
@@ -2647,10 +2783,10 @@ angular.module('ngCookies', ['ng']).
 })(window, window.angular);
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular-module-cookies\\angular-cookies.js","/..\\..\\node_modules\\angular-module-cookies")
-},{"buffer":13,"gzNCgL":16}],11:[function(require,module,exports){
+},{"buffer":14,"gzNCgL":17}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
- * @license AngularJS v1.2.17-build.163+sha.fafcd62
+ * @license AngularJS v1.2.27
  * (c) 2010-2014 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -2678,7 +2814,7 @@ var ngRouteModule = angular.module('ngRoute', ['ng']).
 /**
  * @ngdoc provider
  * @name $routeProvider
- * @function
+ * @kind function
  *
  * @description
  *
@@ -2921,9 +3057,6 @@ function $RouteProvider(){
      * This example shows how changing the URL hash causes the `$route` to match a route against the
      * URL, and the `ngView` pulls in the partial.
      *
-     * Note that this example is using {@link ng.directive:script inlined templates}
-     * to get it working on jsfiddle as well.
-     *
      * <example name="$route-service" module="ngRouteExample"
      *          deps="angular-route.js" fixBase="true">
      *   <file name="index.html">
@@ -3124,9 +3257,7 @@ function $RouteProvider(){
       for (var i = 1, len = m.length; i < len; ++i) {
         var key = keys[i - 1];
 
-        var val = 'string' == typeof m[i]
-              ? decodeURIComponent(m[i])
-              : m[i];
+        var val = m[i];
 
         if (key && val) {
           params[key.name] = val;
@@ -3283,7 +3414,7 @@ ngRouteModule.provider('$routeParams', $RouteParamsProvider);
  *  // Route: /Chapter/:chapterId/Section/:sectionId
  *  //
  *  // Then
- *  $routeParams ==> {chapterId:1, sectionId:2, search:'moby'}
+ *  $routeParams ==> {chapterId:'1', sectionId:'2', search:'moby'}
  * ```
  */
 function $RouteParamsProvider() {
@@ -3424,7 +3555,6 @@ ngRouteModule.directive('ngView', ngViewFillContentFactory);
                   controllerAs: 'chapter'
                 });
 
-              // configure html5 to get links working on jsfiddle
               $locationProvider.html5Mode(true);
           }])
           .controller('MainCtrl', ['$route', '$routeParams', '$location',
@@ -3578,7 +3708,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 })(window, window.angular);
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular-route\\angular-route.js","/..\\..\\node_modules\\angular-route")
-},{"buffer":13,"gzNCgL":16}],12:[function(require,module,exports){
+},{"buffer":14,"gzNCgL":17}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.3.3
@@ -29332,7 +29462,7 @@ var styleDirective = valueFn({
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular\\angular.js","/..\\..\\node_modules\\angular")
-},{"buffer":13,"gzNCgL":16}],13:[function(require,module,exports){
+},{"buffer":14,"gzNCgL":17}],14:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
  * The buffer module from node.js, for the browser.
@@ -30445,7 +30575,7 @@ function assert (test, message) {
 }
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\buffer\\index.js","/..\\..\\node_modules\\browserify\\node_modules\\buffer")
-},{"base64-js":14,"buffer":13,"gzNCgL":16,"ieee754":15}],14:[function(require,module,exports){
+},{"base64-js":15,"buffer":14,"gzNCgL":17,"ieee754":16}],15:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
@@ -30569,7 +30699,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib\\b64.js","/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib")
-},{"buffer":13,"gzNCgL":16}],15:[function(require,module,exports){
+},{"buffer":14,"gzNCgL":17}],16:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
@@ -30657,7 +30787,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
 };
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754\\index.js","/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754")
-},{"buffer":13,"gzNCgL":16}],16:[function(require,module,exports){
+},{"buffer":14,"gzNCgL":17}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 // shim for using process in browser
 
@@ -30724,7 +30854,7 @@ process.chdir = function (dir) {
 };
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\process\\browser.js","/..\\..\\node_modules\\browserify\\node_modules\\process")
-},{"buffer":13,"gzNCgL":16}],17:[function(require,module,exports){
+},{"buffer":14,"gzNCgL":17}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
  * jQuery JavaScript Library v2.1.1
@@ -39918,4 +40048,4 @@ return jQuery;
 }));
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\jquery\\dist\\jquery.js","/..\\..\\node_modules\\jquery\\dist")
-},{"buffer":13,"gzNCgL":16}]},{},[4])
+},{"buffer":14,"gzNCgL":17}]},{},[4])

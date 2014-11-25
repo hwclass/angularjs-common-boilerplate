@@ -1,15 +1,26 @@
-/*Third-Parties*/
+'use strict';
+
+/*===CONFIGS===*/
+var UrlConfig = require('../../../config/url');
+var TestConfig = require('../../../config/test');
+
+/*===MODELS===*/
+var User = require('../../../model/User');
+
+/*===SERVICES===*/
+var TestService = require('../../../service/Test');
+var UserService = require('../../../service/User');
+
+/*===UTILITY===*/
+var TestUtility = require('../../../utility/Test');
+
+/*===3RD PARTIES===*/
 var $ = require('jquery');
-/*Third-Parties*/
 
-/*Services*/
-var TestConfig = require('../../../config/Test');
-var UrlConfig = require('../../../config/Url');
-var TestService = require('../../../services/TestService');
-var TestUtility = require('../../../utilities/TestUtility');
-var User = require('../../../models/User');
-/*Services*/
-
+/**
+ * @name TestCtrl
+ * @desc Test application controller
+ */
 var TestCtrl = function($scope, $http, $cookieStore) {
 
   'use strict';
@@ -27,12 +38,11 @@ var TestCtrl = function($scope, $http, $cookieStore) {
       console.dir(data);
       $scope.cities.push({name : data.name,  description : data.weather[0].description, icon : "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"});
     });
-  }
+  };
 
   console.log('TestUtility::Is testApp string value null ? :' + TestUtility.isNull('testApp'));
   console.log('TestUtility::Is testApp string value undefined ? :' + TestUtility.isUndefined('testApp'));
 
-  /*set cookies*/
   $cookieStore.put('cat','tekir');
 
   var body = $('body');
@@ -52,6 +62,12 @@ var TestCtrl = function($scope, $http, $cookieStore) {
   $scope.name = testUser.name;
   $scope.surName = testUser.surName;
   $scope.address = testUser.address;
+
+  UserService($http).testRequest(function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir(data);
+    };
+  });
 
 };
 

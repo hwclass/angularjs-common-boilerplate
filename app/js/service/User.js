@@ -1,8 +1,25 @@
-var UserService = function () {
+/**
+ * @name UserService
+ * @desc UserService service
+ */
+var UserService = function ($http) {
 	
 	return (function () {
 		
 		return {
+
+			testRequest : function (callback) {
+				$http({
+					method : 'GET',
+					url : 'http://api.openweathermap.org/data/2.5/weather?q=London,uk'
+				}).
+					success(function (data, status, headers, config) {
+						callback(data)
+					}).
+					error(function (data, status, headers, config) {
+						console.log(data);
+				});
+			},
 
 			/*
 			* Phase 1.V3 - 2.1 Post User Login
@@ -79,8 +96,8 @@ var UserService = function () {
 				$http({
 					method : 'POST', 
 					url : 'url', 
-					headers : {session_key: sessionKey},
-					{
+					headers : {
+						session_key: sessionKey,
 						first_name : firstName,
 						last_name : lastName,
 						email : email,
@@ -94,72 +111,8 @@ var UserService = function () {
 				  error(function(data, status, headers, config) {
 				    console.log(data);
 				});
-			},
-
-			/*
-			* Phase 1.V3 - 2.6 Post User Signup
-			*/
-			signUp : function (sessionKey, firstName, lastName, email, gender, password, basketId, callback) {
-				$http({
-					method : 'POST', 
-					url : 'url', 
-					headers : {session_key: sessionKey},
-					{
-						first_name : firstName,
-						last_name : lastName,
-						email : email,
-						gender : gender,
-						password : password,
-						basket_id : basketId
-					}
-				}).
-				  success(function(data, status, headers, config) {
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
-			},
-
-			/*
-			* Phase 1.V3 - 2.7 Post Reset Password
-			*/
-			resetPassword : function (email, callback) {
-				$http({
-					method : 'POST', 
-					url : 'url', 
-					headers : {session_key: sessionKey},
-					{email : email}
-				}).
-				  success(function(data, status, headers, config) {
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
-			},
-
-			/*
-			* Phase 1.V3 - 2.8 Post Change Password
-			*/
-			changePassword : function (sessionKey, oldPassword, newPassword1, newPassword2, callback) {
-				$http({
-					method : 'POST', 
-					url : 'url', 
-					headers : {session_key: sessionKey},
-					{
-						old_password : oldPassword,
-						new_password1 : newPassword1,
-						new_password2: : newPassword2
-					}
-				}).
-				  success(function(data, status, headers, config) {
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
 			}
+
 
 		}
 

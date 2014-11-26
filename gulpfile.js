@@ -6,6 +6,10 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     rimraf = require('gulp-rimraf'),
     sass = require('gulp-sass'),
+    minifyCSS = require('gulp-minify-css'),
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename'),
+    minifyHtml = require('gulp-minify-html'),
     autoprefixer = require('gulp-autoprefixer');
 
 var express = require('express'),
@@ -13,6 +17,19 @@ var express = require('express'),
     livereload = require('connect-livereload'),
     livereloadport = 35729,
     serverport = 5000;
+
+// Path to sass
+
+var indexRootForDist = 'dist/';
+var cssRootForSite = 'app/style/css/';
+var cssRootForDist = 'dist/style/css/';
+var sassRootForApp = 'app/style/sass/';
+var buildJsForSite = 'app/js/build.js';
+var buildJsForDist = 'dist/js';
+var indexHtmlForSite = 'app/index.html';
+var partialForSite = 'app/js/section';
+var partialForDist = 'dist/js/section';
+
 
 // Set up an express server (not starting it yet)
 var server = express();
@@ -49,11 +66,51 @@ gulp.task('build', function() {
   .pipe(gulp.dest('app/src'));
 });
 
-gulp.task('watch', ['lint'], function() {
+gulp.task('watch_js', ['lint'], function() {
   gulp.watch('app/js/**/*.js', ['build']);
   server.listen(serverport);
   // Start live reload
   refresh.listen(livereloadport);
 });
 
-gulp.task('default', ['dev', 'watch']);
+// Get sass files and convert to css
+gulp.task('sass_to_css', function(){
+  return gulp.src(sassRootForApp + 'main.scss')
+    .pipe(sass({sourcemap: true}))
+    .pipe(rename('build.css'))
+    .pipe(gulp.dest(cssRootForSite));
+});
+
+// Minify and copy css file to dist
+gulp.task('copy_css_to_dist', function(){
+  gulp.src(cssRootForSite + 'build.css')
+    .pipe(minifyCSS({keepBreaks: true}))
+    .pipe(gulp.dest(cssRootForDist))
+});
+
+// Uglify and Copy build.js to dist file
+gulp.task('copy_buildJs_to_dist', function(){
+  gulp.src(buildJsForSite)
+    .pipe(uglify({mangle : false}))
+    .pipe(gulp.dest(buildJsForDist))
+});
+
+// Copy index.html to dist
+gulp.task('copy_indexHtml_to_dist', function(){
+  gulp.src(indexHtmlForSite)
+  .pipe(gulp.dest(indexRootForDist))
+});
+
+// Copy test partial to dist
+gulp.task('copy_test_partial_to_dist', function(){
+  gulp.src(partialForSite + '/test/partial/test.html')
+  .pipe(gulp.dest(partialForDist + '/test/partial'))
+});
+
+gulp.task('watch_css', function(){
+  gulp.watch("app/style/sass/**/*.scss", ['sass_to_css', 'copy_css_to_dist']);
+});
+
+
+
+gulp.task('default', ['dev', 'watch_js', 'watch_css']);

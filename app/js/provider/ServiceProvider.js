@@ -36,7 +36,7 @@ var ServiceProvider = function ($http) {
         UserService($http).logIn(userName, password, basketId, function (data) {
           callback(data);
         });
-      },
+      }
 
     }
 

@@ -1,18 +1,20 @@
 'use strict';
 
 /*===CONFIGS===*/
-var UrlConfig = require('../../../config/url');
-var TestConfig = require('../../../config/test');
+var UrlConfig = require('../../../config/UrlConfig');
+var TestConfig = require('../../../config/TestConfig');
 
 /*===MODELS===*/
 var User = require('../../../model/User');
 
+/*===PROVIDERS===*/
+var UserServiceProvider = require('../../../provider/UserServiceProvider');
+
 /*===SERVICES===*/
-var TestService = require('../../../service/Test');
-var UserService = require('../../../service/User');
+var TestService = require('../../../service/TestService');
 
 /*===UTILITY===*/
-var TestUtility = require('../../../utility/Test');
+var TestUtility = require('../../../utility/TestUtility');
 
 /*===3RD PARTIES===*/
 var $ = require('jquery');
@@ -63,9 +65,9 @@ var TestCtrl = function($scope, $http, $cookieStore) {
   $scope.surName = testUser.surName;
   $scope.address = testUser.address;
 
-  UserService($http).testRequest(function (data) {
+  UserServiceProvider($http).testRequest(function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
-      console.dir(data);
+      console.dir('user data : ' + data.name);
     };
   });
 

@@ -13,27 +13,27 @@
   require('angular-module-cookies');
 
   /*===SERVICES===*/
-  var testService = require('./service/Test');
+  var TestService = require('./service/TestService');
 
   /*===CONTROLLERS===*/
-  var testCtrl = require('./section/test/controller/test');
+  var TestController = require('./section/test/controller/TestController');
 
   /*===DIRECTIVES===*/
-  var testComponent = require('./component/Test');
+  var TestComponent = require('./component/TestComponent');
 
   angular.module('AngularCommonApp', ['ngRoute', 'ngCookies'])
     .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/test', {
-        templateUrl : './js/section/test/partial/test.html',
-        controller : 'testCtrl'
+        templateUrl : './src/section/test/partial/test.html',
+        controller : 'TestController'
     })
     .otherwise({
       redirectTo: '/'
     });
   }])
-  .controller('testCtrl', ['$scope', '$http', '$cookieStore', testCtrl])
-  .factory('testService', ['$http', testService])
-  .directive('testComponent', [testComponent]);
+  .controller('TestController', ['$scope', '$http', '$cookieStore', TestController])
+  .factory('TestService', ['$http', TestService])
+  .directive('TestComponent', [TestComponent]);
 
 })();

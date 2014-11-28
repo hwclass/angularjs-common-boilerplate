@@ -38,7 +38,7 @@ gulp.task('lint', function() {
 // Browserify task
 gulp.task('build', function() {
   // Single point of entry (make sure not to src ALL your files, browserify will figure it out)
-  gulp.src(['app/js/app.js'])
+  gulp.src(['app/src/app.js'])
   .pipe(browserify({
     insertGlobals: true,
     debug: false
@@ -46,7 +46,7 @@ gulp.task('build', function() {
   // Bundle to a single file
   .pipe(concat('build.js'))
   // Output it to our dist folder
-  .pipe(gulp.dest('app/js'));
+  .pipe(gulp.dest('app/src'));
 });
 
 gulp.task('watch', ['lint'], function() {

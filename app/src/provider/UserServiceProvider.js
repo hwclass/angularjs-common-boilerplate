@@ -15,6 +15,7 @@ var ServiceProvider = function ($http) {
 
       /**
       * @name testRequest
+      * @ref testRequest
       * @desc Does something awesome
       * @param {Function} callback - Callback after response returns
       * @returns {undefined}

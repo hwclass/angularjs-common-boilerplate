@@ -6,6 +6,7 @@ var TestConfig = require('../../../config/TestConfig');
 
 /*===MODELS===*/
 var User = require('../../../model/User');
+var UserRequest = require('../../../model/UserRequest');
 
 /*===PROVIDERS===*/
 var UserServiceProvider = require('../../../provider/UserServiceProvider');
@@ -68,6 +69,20 @@ var TestCtrl = function($scope, $http, $cookieStore) {
   UserServiceProvider($http).testRequest(function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data.name);
+    };
+  });
+
+  var currentUser = null,
+      userRequest = null;
+
+  $scope.bulidUserData = function () {
+    currentUser = new User('test@test.com', 'test123', 'John', 'Doe', 'Yukarı Ayrancı No:2', '1655433213');
+    userRequest = new UserRequest(currentUser.getUserName(), currentUser.getPassWord(), currentUser.getBasketId());
+  }
+
+  UserServiceProvider($http).logIn(userRequest.getUserName(), userRequest.getPassWord(), userRequest.getBasketId(), function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
     };
   });
 

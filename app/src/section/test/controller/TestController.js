@@ -75,7 +75,7 @@ var TestCtrl = function($scope, $http, $cookieStore) {
   var currentUser = null,
       userRequest = null;
 
-  $scope.bulidUserData = function () {
+  $scope.buildUserData = function () {
     currentUser = new User('test@test.com', 'test123', 'John', 'Doe', 'Yukarı Ayrancı No:2', '1655433213');
     userRequest = new UserRequest(currentUser.getUserName(), currentUser.getPassWord(), currentUser.getBasketId());
   }

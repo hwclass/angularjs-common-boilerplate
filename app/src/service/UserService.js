@@ -26,14 +26,14 @@ var UserService = function ($http) {
 			/*
 			* Phase 1.V3 - 2.1 Post User Login
 			*/
-			postUserLogin : function (userName, passWord, basketId, callback) {
+			postUserLogin : function (userRequest, callback) {
 				$http({
 					method : 'GET', 
 					url : 'url',
 					data : {
-						'username' : userName,
-						'password' : passWord,
-						'basket_id' : basketId
+						'username' : userRequest.getUserName(),
+						'password' : userRequest.getPassWord(),
+						'basket_id' : userRequest.getBasketId()
 					}
 				}).
 				  success(function(data, status, headers, config) {

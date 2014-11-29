@@ -80,7 +80,7 @@ var TestCtrl = function($scope, $http, $cookieStore) {
     userRequest = new UserRequest(currentUser.getUserName(), currentUser.getPassWord(), currentUser.getBasketId());
   }
 
-  UserServiceProvider($http).logIn(userRequest.getUserName(), userRequest.getPassWord(), userRequest.getBasketId(), function (data) {
+  UserServiceProvider($http).logIn(userRequest, function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data);
     };

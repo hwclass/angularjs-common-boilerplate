@@ -36,8 +36,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      logUserIn : function (userName, passWord, basketId, callback) {
-        UserService($http).postUserLogin(userName, password, basketId, function (data) {
+      logUserIn : function (userRequest, callback) {
+        UserService($http).postUserLogin(userRequest, function (data) {
           callback(data);
         });
       },

@@ -78,8 +78,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      getUserAlternativeInfo : function (sessionKey, callback) {
-        UserService($http).getUserDetail(sessionKey, function (data) {
+      getUserAlternativeInfo : function (userSession, callback) {
+        UserService($http).getUserDetail(userSession, function (data) {
           callback(data);
         });
       },
@@ -97,8 +97,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      updateUserInfo : function (sessionKey, firstName, lastName, email, birthday, gender, callback) {
-        UserService($http).patchUserInfo(sessionKey, firstName, lastName, email, birthday, gender, function (data) {
+      updateUserInfo : function (userSession, userRequest, callback) {
+        UserService($http).patchUserInfo(userSession, userRequest, function (data) {
           callback(data);
         });
       },
@@ -116,8 +116,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      signUserUp : function (firstName, lastName, email, gender, password, basketId, callback) {
-        UserService($http).postUserSignUp(firstName, lastName, email, gender, password, basketId, function (data) {
+      signUserUp : function (userRequest, callback) {
+        UserService($http).postUserSignUp(userRequest, function (data) {
           callback(data);
         });
       },
@@ -130,8 +130,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      resetUserPassword : function (email, callback) {
-        UserService($http).postResetPassword(email, function (data) {
+      resetUserPassword : function (userRequest, callback) {
+        UserService($http).postResetPassword(userRequest, function (data) {
           callback(data);
         });
       },
@@ -144,8 +144,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      changeUserPassword : function (sessionKey, oldPassword, newPassword1, newPassword2, callback) {
-        UserService($http).postChangePassword(sessionKey, oldPassword, newPassword1, newPassword2, function (data) {
+      changeUserPassword : function (userSession, userRequest, callback) {
+        UserService($http).postChangePassword(userSession, userRequest, function (data) {
           callback(data);
         });
       }

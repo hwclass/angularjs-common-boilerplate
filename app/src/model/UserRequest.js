@@ -2,7 +2,7 @@
 * Model::Request
 */
 
-var UserRequest = function (sessionKey, firstName, lastName, email, birthday, gender, userName, passWord, basketId) {
+var UserRequest = function (sessionKey, firstName, lastName, email, birthday, gender, userName, passWord, oldPassWord, newPassWord1, newPassWord2, basketId) {
 
 	this.sessionKey = sessionKey;
 
@@ -52,6 +52,18 @@ var UserRequest = function (sessionKey, firstName, lastName, email, birthday, ge
 
 	this.getPassWord = function () {
 		return this.passWord;
+	};
+
+	this.getOldPAssWord = function () {
+		return this.oldPassWord;
+	};
+
+	this.getNewPAssWord1 = function () {
+		return this.newPassWord1;
+	};
+
+	this.getNewPAssWord2 = function () {
+		return this.newPassWord2;
 	};
 
 	this.getBasketId = function () {

@@ -96,28 +96,53 @@ var TestCtrl = function($scope, $http, $cookieStore) {
   }
 
   /*Connect to UserService over UserServiceProvider to log the user out*/
-  UserServiceProvider($http).logUserOut(userSession, function () {
+  UserServiceProvider($http).logUserOut(userSession, function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data);
     };
   });
 
   /*Connect to UserService over UserServiceProvider to get user info*/
-  UserServiceProvider($http).getUserInfo(userSession, function () {
+  UserServiceProvider($http).getUserInfo(userSession, function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data);
     };
   });
 
-  getUserAlternativeInfo sessionKey
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).getUserAlternativeInfo(userSession, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
 
-  updateUserInfo sessionKey, firstName, lastName, email, birthday, gender
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).updateUserInfo(userSession, userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
 
-  signUserUp firstName, lastName, email, gender, password, basketId
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).signUserUp(userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
 
-  resetUserPassword email
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).resetUserPassword(userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
 
-  changeUserPassword sessionKey, oldPassword, newPassword1, newPassword2
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).changeUserPassword(userSession, userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
 
 };
 

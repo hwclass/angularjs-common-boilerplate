@@ -23,9 +23,9 @@ var UserService = function ($http) {
         });
       },
 
-			/*
-			* Phase 1.V3 - 2.1 Post User Login
-			*/
+      /*
+      * Phase 1.V3 - 2.1 Post User Login
+      */
       postUserLogin : function (userRequest, callback) {
         $http({
           method : 'GET', 
@@ -47,9 +47,9 @@ var UserService = function ($http) {
         });
       },
 
-			/*
-			* Phase 1.V3 - 2.2 Post User Logout
-			*/
+      /*
+      * Phase 1.V3 - 2.2 Post User Logout
+      */
       postUserLogout : function (sessionKey, callback) {
         $http({
           method : 'POST', 
@@ -67,9 +67,9 @@ var UserService = function ($http) {
         });
       },
 
-			/*
-			* Phase 1.V3 - 2.3 Get User List
-			*/
+      /*
+      * Phase 1.V3 - 2.3 Get User List
+      */
       getUserList : function (sessionKey, callback) {
         $http({
           method : 'GET', 
@@ -87,9 +87,9 @@ var UserService = function ($http) {
         });
       },
 
-			/*
-			* Phase 1.V3 - 2.4 Get User Detail
-			*/
+      /*
+      * Phase 1.V3 - 2.4 Get User Detail
+      */
       getUserDetail : function (sessionKey, callback) {
         $http({
           method : 'GET', 
@@ -107,9 +107,9 @@ var UserService = function ($http) {
         });
       },
 
-			/*
-			* Phase 1.V3 - 2.5 Patch User Info
-			*/
+      /*
+      * Phase 1.V3 - 2.5 Patch User Info
+      */
 			patchUserInfo : function (sessionKey, firstName, lastName, email, birthday, gender, callback) {
         $http({
           method : 'POST', 
@@ -134,9 +134,9 @@ var UserService = function ($http) {
         });
 			},
 
-			/*
-			* Phase 1.V3 - 2.6 Post User Signup
-			*/
+      /*
+      * Phase 1.V3 - 2.6 Post User Signup
+      */
       postUserSignUp : function (firstName, lastName, email, gender, password, basketId, callback) {
         $http({
           method : 'POST', 
@@ -161,9 +161,9 @@ var UserService = function ($http) {
         });
       },
 
-			/*
-			* Phase 1.V3 - 2.7 Post Reset Password
-			*/
+      /*
+      * Phase 1.V3 - 2.7 Post Reset Password
+      */
       postResetPassword : function (email, callback) {
         $http({
           method : 'POST', 
@@ -183,9 +183,9 @@ var UserService = function ($http) {
         });
       },
 
-			/*
-			* Phase 1.V3 - 2.8 Post Change Password
-			*/
+      /*
+      * Phase 1.V3 - 2.8 Post Change Password
+      */
       postChangePassword : function (sessionKey, oldPassword, newPassword1, newPassword2, callback) {
         $http({
           method : 'POST', 

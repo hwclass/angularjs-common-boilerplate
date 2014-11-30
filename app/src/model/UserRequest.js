@@ -2,9 +2,7 @@
 * Model::Request
 */
 
-var UserRequest = function (sessionKey, firstName, lastName, email, birthday, gender, userName, passWord, oldPassWord, newPassWord1, newPassWord2, basketId) {
-
-	this.sessionKey = sessionKey;
+var UserRequest = function (firstName, lastName, email, birthday, gender, userName, passWord, oldPassWord, newPassWord1, newPassWord2, basketId) {
 
 	this.firstName = firstName;
 
@@ -21,11 +19,7 @@ var UserRequest = function (sessionKey, firstName, lastName, email, birthday, ge
 	this.passWord = passWord;
 
 	this.basketId = basketId;
-
-	this.getSessionKey = function () {
-		return this.sessionKey;
-	};
-
+	
 	this.getFirstName = function () {
 		return this.firstName;
 	};

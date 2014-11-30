@@ -110,17 +110,17 @@ var UserService = function ($http) {
       /*
       * Phase 1.V3 - 2.5 Patch User Info
       */
-			patchUserInfo : function (sessionKey, firstName, lastName, email, birthday, gender, callback) {
+      patchUserInfo : function (sessionKey, firstName, lastName, email, birthday, gender, callback) {
         $http({
           method : 'POST', 
           url : 'url', 
           headers : {'session_key': sessionKey},
           data : {
-          'first_name' : firstName,
-          'last_name' : lastName,
-          'email' : email,
-          'birthday' : birthday,
-          'gender' : gender
+            'first_name' : firstName,
+            'last_name' : lastName,
+            'email' : email,
+            'birthday' : birthday,
+            'gender' : gender
           }
         }).
         success(function(data, status, headers, config) {
@@ -132,7 +132,7 @@ var UserService = function ($http) {
         error(function(data, status, headers, config) {
           console.log(data);
         });
-			},
+      },
 
       /*
       * Phase 1.V3 - 2.6 Post User Signup
@@ -210,9 +210,9 @@ var UserService = function ($http) {
         });
       }
 
-		}
+    }
 
-	})();
+  })();
 
 };
 

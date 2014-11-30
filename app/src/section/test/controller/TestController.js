@@ -7,6 +7,7 @@ var TestConfig = require('../../../config/TestConfig');
 /*===MODELS===*/
 var User = require('../../../model/User');
 var UserRequest = require('../../../model/UserRequest');
+var UserSession = require('../../../model/UserSession');
 
 /*===PROVIDERS===*/
 var UserServiceProvider = require('../../../provider/UserServiceProvider');
@@ -73,18 +74,50 @@ var TestCtrl = function($scope, $http, $cookieStore) {
   });
 
   var currentUser = null,
-      userRequest = null;
+      userRequest = null,
+      currentUserSession = null,
+      userSession = null;
 
-  $scope.buildUserData = function () {
+  var buildUserDatToLogUserIn = function () {
     currentUser = new User('test@test.com', 'test123', 'John', 'Doe', 'Yukarı Ayrancı No:2', '1655433213');
     userRequest = new UserRequest(currentUser.getUserName(), currentUser.getPassWord(), currentUser.getBasketId());
   }
 
-  UserServiceProvider($http).logIn(userRequest, function (data) {
+  /*Connect to UserService over UserServiceProvider to log the user in*/
+  UserServiceProvider($http).logUserIn(userRequest, function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data);
     };
   });
+
+  var buildUserDataTologUserOut = function () {
+    currentUserSession = new UserSession('!jK989&');
+    userSession = new UserRequest(currentUserSession.getSessionKey());
+  }
+
+  /*Connect to UserService over UserServiceProvider to log the user out*/
+  UserServiceProvider($http).logUserOut(userSession, function () {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to log the user out*/
+  UserServiceProvider($http).getUserInfo(userSession, function () {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  getUserAlternativeInfo sessionKey
+
+  updateUserInfo sessionKey, firstName, lastName, email, birthday, gender
+
+  signUserUp firstName, lastName, email, gender, password, basketId
+
+  resetUserPassword email
+
+  changeUserPassword sessionKey, oldPassword, newPassword1, newPassword2
 
 };
 

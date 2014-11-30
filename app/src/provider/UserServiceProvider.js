@@ -50,8 +50,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      logUserOut : function (sessionKey, callback) {
-        UserService($http).postUserLogout(sessionKey, function (data) {
+      logUserOut : function (userSession, callback) {
+        UserService($http).postUserLogout(userSession, function (data) {
           callback(data);
         });
       },
@@ -64,8 +64,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      getUserInfo : function (sessionKey, callback) {
-        UserService($http).getUserList(sessionKey, function (data) {
+      getUserInfo : function (userSession, callback) {
+        UserService($http).getUserList(userSession, function (data) {
           callback(data);
         });
       },

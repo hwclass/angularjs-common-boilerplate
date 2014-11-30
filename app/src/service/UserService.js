@@ -50,11 +50,13 @@ var UserService = function ($http) {
       /*
       * Phase 1.V3 - 2.2 Post User Logout
       */
-      postUserLogout : function (sessionKey, callback) {
+      postUserLogout : function (userSession, callback) {
         $http({
           method : 'POST', 
           url : 'url', 
-          data : {'session_key' : sessionKey}
+          data : {
+            'session_key' : userSession.getSessionKey()
+          }
         }).
         success(function(data, status, headers, config) {
           /*
@@ -70,11 +72,13 @@ var UserService = function ($http) {
       /*
       * Phase 1.V3 - 2.3 Get User List
       */
-      getUserList : function (sessionKey, callback) {
+      getUserList : function (userSession, callback) {
         $http({
           method : 'GET', 
           url : 'url', 
-          headers : {'session_key' : sessionKey}
+          headers : {
+            'session_key' : userSession.getSessionKey()
+          }
         }).
         success(function(data, status, headers, config) {
           /*

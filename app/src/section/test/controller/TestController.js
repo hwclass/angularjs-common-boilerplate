@@ -102,7 +102,7 @@ var TestCtrl = function($scope, $http, $cookieStore) {
     };
   });
 
-  /*Connect to UserService over UserServiceProvider to log the user out*/
+  /*Connect to UserService over UserServiceProvider to get user info*/
   UserServiceProvider($http).getUserInfo(userSession, function () {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data);

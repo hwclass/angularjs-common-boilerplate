@@ -121,7 +121,7 @@ var UserService = function ($http) {
           method : 'POST', 
           url : 'url', 
           headers : {
-            'session_key': userSession.getSessionKey();
+            'session_key': userSession.getSessionKey()
           },
           data : {
             'first_name' : userRequest.getFirstName(),

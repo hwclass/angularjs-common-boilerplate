@@ -380,8 +380,11 @@ input, button, textarea {
 .clear:after {
   clear: both; }
 
-.test {
+.test12 {
   font-size: 60px; }
+
+h3 {
+  color: #d3d3d3 !important; }
 
 /*!
  * Bootstrap v2.3.2

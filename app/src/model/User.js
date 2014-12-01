@@ -6,13 +6,13 @@ var User = function (userName, passWord, name, surName, address, basketId) {
 	
   this.userName = userName;
 
-  this.name = name;
+  this.passWord = passWord;
+
+	this.name = name;
 
   this.surName = surName;
 
   this.address = address;
-
-  this.passWord = passWord;
 
   this.basketId = basketId;
 
@@ -24,9 +24,21 @@ var User = function (userName, passWord, name, surName, address, basketId) {
     return this.passWord;
   };
 
-  this.basketId = function () {
-    return this.basketId;
+  this.getName = function () {
+    return this.name;
   };
+
+  this.getSurName = function () {
+    return this.surName;
+  };
+
+  this.getAddress = function () {
+    return this.address;
+  };
+
+	this.getBasketId = function () {
+		return this.basketId;
+	};
 
 };
 

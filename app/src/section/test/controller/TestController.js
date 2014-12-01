@@ -81,7 +81,9 @@ var TestCtrl = function($scope, $http, $cookieStore) {
   var buildUserDatToLogUserIn = function () {
     currentUser = new User('test@test.com', 'test123', 'John', 'Doe', 'Yukarı Ayrancı No:2', '1655433213');
     userRequest = new UserRequest(currentUser.getUserName(), currentUser.getPassWord(), currentUser.getBasketId());
-  }
+  };
+
+  buildUserDatToLogUserIn();
 
   /*Connect to UserService over UserServiceProvider to log the user in*/
   UserServiceProvider($http).logUserIn(userRequest, function (data) {
@@ -92,8 +94,10 @@ var TestCtrl = function($scope, $http, $cookieStore) {
 
   var buildUserDataTologUserOut = function () {
     currentUserSession = new UserSession('!jK989&');
-    userSession = new UserRequest(currentUserSession.getSessionKey());
-  }
+    userSession = new UserSession(currentUserSession.getSessionKey());
+  };
+
+  buildUserDataTologUserOut();
 
   /*Connect to UserService over UserServiceProvider to log the user out*/
   UserServiceProvider($http).logUserOut(userSession, function (data) {

@@ -18,6 +18,12 @@ var UserRequest = function (firstName, lastName, email, birthday, gender, userNa
 
 	this.passWord = passWord;
 
+	this.oldPassWord = oldPassWord;
+
+	this.newPassWord1 = newPassWord1;
+
+	this.newPassWord2 = newPassWord2;
+
 	this.basketId = basketId;
 	
 	this.getFirstName = function () {
@@ -48,15 +54,15 @@ var UserRequest = function (firstName, lastName, email, birthday, gender, userNa
 		return this.passWord;
 	};
 
-	this.getOldPAssWord = function () {
+	this.getOldPassWord = function () {
 		return this.oldPassWord;
 	};
 
-	this.getNewPAssWord1 = function () {
+	this.getNewPassWord1 = function () {
 		return this.newPassWord1;
 	};
 
-	this.getNewPAssWord2 = function () {
+	this.getNewPassWord2 = function () {
 		return this.newPassWord2;
 	};
 
@@ -64,4 +70,6 @@ var UserRequest = function (firstName, lastName, email, birthday, gender, userNa
 		return this.basketId;
 	};
 
-}
+};
+
+module.exports = UserRequest;

@@ -8,7 +8,7 @@ var Test = function () {
 
 module.exports = Test;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/component\\TestComponent.js","/component")
-},{"buffer":15,"gzNCgL":18}],2:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],2:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -29,7 +29,7 @@ module.exports = {
   }
 };
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/config\\TestConfig.js","/config")
-},{"buffer":15,"gzNCgL":18}],3:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],3:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -104,7 +104,7 @@ module.exports = (function() {
 
 })();
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/config\\UrlConfig.js","/config")
-},{"buffer":15,"gzNCgL":18}],4:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],4:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*
  * Main app initializer for the whole app as a mediator
@@ -125,6 +125,7 @@ module.exports = (function() {
 
   /*===CONTROLLERS===*/
   var TestController = require('./section/test/controller/TestController');
+  var ProductListController = require('./section/productList/controller/ProductListController');
 
   /*===DIRECTIVES===*/
   var TestComponent = require('./component/TestComponent');
@@ -135,9 +136,13 @@ module.exports = (function() {
       .when('/test', {
         templateUrl : './src/section/test/partial/test.html',
         controller : 'TestController'
-    })
-    .otherwise({
-      redirectTo: '/'
+      })
+      .when('/productList', {
+        templateUrl : './src/section/productList/partial/productList.html',
+        controller : 'ProductListController'
+      })
+      .otherwise({
+        redirectTo: '/'
     });
   }])
   .controller('TestController', ['$scope', '$http', '$cookieStore', TestController])
@@ -145,8 +150,8 @@ module.exports = (function() {
   .directive('TestComponent', [TestComponent]);
 
 })();
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_b32edbe5.js","/")
-},{"./component/TestComponent":1,"./section/test/controller/TestController":7,"./service/TestService":8,"angular":14,"angular-animate":11,"angular-module-cookies":12,"angular-route":13,"buffer":15,"gzNCgL":18}],5:[function(require,module,exports){
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_9d2f7717.js","/")
+},{"./component/TestComponent":1,"./section/productList/controller/ProductListController":9,"./section/test/controller/TestController":10,"./service/TestService":11,"angular":17,"angular-animate":14,"angular-module-cookies":15,"angular-route":16,"buffer":18,"gzNCgL":21}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*
 * Model::User
@@ -154,17 +159,95 @@ module.exports = (function() {
 
 var User = function (userName, passWord, name, surName, address, basketId) {
 	
-	this.userName = userName;
+  this.userName = userName;
+
+  this.passWord = passWord;
 
 	this.name = name;
 
-	this.surName = surName;
+  this.surName = surName;
 
-	this.address = address;
-	
+  this.address = address;
+
+  this.basketId = basketId;
+
+  this.getUserName = function () {
+    return this.userName;
+  };
+
+  this.getPassWord = function () {
+    return this.passWord;
+  };
+
+  this.getName = function () {
+    return this.name;
+  };
+
+  this.getSurName = function () {
+    return this.surName;
+  };
+
+  this.getAddress = function () {
+    return this.address;
+  };
+
+	this.getBasketId = function () {
+		return this.basketId;
+	};
+
+};
+
+module.exports = User;
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/model\\User.js","/model")
+},{"buffer":18,"gzNCgL":21}],6:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+/*
+* Model::Request
+*/
+
+var UserRequest = function (firstName, lastName, email, birthday, gender, userName, passWord, oldPassWord, newPassWord1, newPassWord2, basketId) {
+
+	this.firstName = firstName;
+
+	this.lastName = lastName;
+
+	this.email = email;
+
+	this.birthday = birthday;
+
+	this.gender = gender;
+
+	this.userName = userName;
+
 	this.passWord = passWord;
 
+	this.oldPassWord = oldPassWord;
+
+	this.newPassWord1 = newPassWord1;
+
+	this.newPassWord2 = newPassWord2;
+
 	this.basketId = basketId;
+	
+	this.getFirstName = function () {
+		return this.firstName;
+	};
+
+	this.getLastName = function () {
+		return this.lastName;
+	};
+
+	this.getEmail = function () {
+		return this.email;
+	};
+
+	this.getBirthday = function () {
+		return this.birthday;
+	};
+
+	this.getGender = function () {
+		return this.gender;
+	};
 
 	this.getUserName = function () {
 		return this.userName;
@@ -174,15 +257,45 @@ var User = function (userName, passWord, name, surName, address, basketId) {
 		return this.passWord;
 	};
 
-	this.basketId = function () {
+	this.getOldPassWord = function () {
+		return this.oldPassWord;
+	};
+
+	this.getNewPassWord1 = function () {
+		return this.newPassWord1;
+	};
+
+	this.getNewPassWord2 = function () {
+		return this.newPassWord2;
+	};
+
+	this.getBasketId = function () {
 		return this.basketId;
 	};
 
 };
 
-module.exports = User;
-}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/model\\User.js","/model")
-},{"buffer":15,"gzNCgL":18}],6:[function(require,module,exports){
+module.exports = UserRequest;
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/model\\UserRequest.js","/model")
+},{"buffer":18,"gzNCgL":21}],7:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+/*
+* Model::UserSession
+*/
+
+var UserSession = function (sessionKey) {
+
+  this.sessionKey = sessionKey;
+
+  this.getSessionKey = function () {
+    return this.sessionKey;
+  };
+
+};
+
+module.exports = UserSession;
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/model\\UserSession.js","/model")
+},{"buffer":18,"gzNCgL":21}],8:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -201,6 +314,7 @@ var ServiceProvider = function ($http) {
 
       /**
       * @name testRequest
+      * @ref testRequest
       * @desc Does something awesome
       * @param {Function} callback - Callback after response returns
       * @returns {undefined}
@@ -221,8 +335,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      logUserIn : function (userName, passWord, basketId, callback) {
-        UserService($http).postUserLogin(userName, password, basketId, function (data) {
+      logUserIn : function (userRequest, callback) {
+        UserService($http).postUserLogin(userRequest, function (data) {
           callback(data);
         });
       },
@@ -235,8 +349,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      logUserOut : function (sessionKey, callback) {
-        UserService($http).postUserLogout(sessionKey, function (data) {
+      logUserOut : function (userSession, callback) {
+        UserService($http).postUserLogout(userSession, function (data) {
           callback(data);
         });
       },
@@ -249,8 +363,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      getUserInfo : function (sessionKey, callback) {
-        UserService($http).getUserList(sessionKey, function (data) {
+      getUserInfo : function (userSession, callback) {
+        UserService($http).getUserList(userSession, function (data) {
           callback(data);
         });
       },
@@ -263,8 +377,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      getUserAlternativeInfo : function (sessionKey, callback) {
-        UserService($http).getUserDetail(sessionKey, function (data) {
+      getUserAlternativeInfo : function (userSession, callback) {
+        UserService($http).getUserDetail(userSession, function (data) {
           callback(data);
         });
       },
@@ -282,8 +396,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      updateUserInfo : function (sessionKey, firstName, lastName, email, birthday, gender, callback) {
-        UserService($http).patchUserInfo(sessionKey, firstName, lastName, email, birthday, gender, function (data) {
+      updateUserInfo : function (userSession, userRequest, callback) {
+        UserService($http).patchUserInfo(userSession, userRequest, function (data) {
           callback(data);
         });
       },
@@ -301,8 +415,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      signUserUp : function (firstName, lastName, email, gender, password, basketId, callback) {
-        UserService($http).postUserSignUp(firstName, lastName, email, gender, password, basketId, function (data) {
+      signUserUp : function (userRequest, callback) {
+        UserService($http).postUserSignUp(userRequest, function (data) {
           callback(data);
         });
       },
@@ -315,8 +429,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      resetUserPassword : function (email, callback) {
-        UserService($http).postResetPassword(email, function (data) {
+      resetUserPassword : function (userRequest, callback) {
+        UserService($http).postResetPassword(userRequest, function (data) {
           callback(data);
         });
       },
@@ -329,8 +443,8 @@ var ServiceProvider = function ($http) {
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
        */
-      changeUserPassword : function (sessionKey, oldPassword, newPassword1, newPassword2, callback) {
-        UserService($http).postChangePassword(sessionKey, oldPassword, newPassword1, newPassword2, function (data) {
+      changeUserPassword : function (userSession, userRequest, callback) {
+        UserService($http).postChangePassword(userSession, userRequest, function (data) {
           callback(data);
         });
       }
@@ -343,7 +457,7 @@ var ServiceProvider = function ($http) {
 
  module.exports = ServiceProvider;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/provider\\UserServiceProvider.js","/provider")
-},{"../service/UserService":9,"buffer":15,"gzNCgL":18}],7:[function(require,module,exports){
+},{"../service/UserService":12,"buffer":18,"gzNCgL":21}],9:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -353,6 +467,160 @@ var TestConfig = require('../../../config/TestConfig');
 
 /*===MODELS===*/
 var User = require('../../../model/User');
+var UserRequest = require('../../../model/UserRequest');
+var UserSession = require('../../../model/UserSession');
+
+/*===PROVIDERS===*/
+var UserServiceProvider = require('../../../provider/UserServiceProvider');
+
+/*===SERVICES===*/
+var TestService = require('../../../service/TestService');
+
+/*===UTILITY===*/
+var TestUtility = require('../../../utility/TestUtility');
+
+/*===3RD PARTIES===*/
+var $ = require('jquery');
+
+/**
+ * @name TestCtrl
+ * @desc Test application controller
+ */
+var ProductListController = function($scope, $http, $cookieStore) {
+
+  'use strict';
+
+  $scope.title = TestConfig.getTitle();
+
+  $scope.cities = [];
+
+  var cities = TestConfig.getCities();
+
+  console.dir(cities);
+
+  for (var cityCounter = 0, len = cities.length; cityCounter < len; cityCounter++) {
+    TestService($http).getWeather(cities[cityCounter].city, cities[cityCounter].prefix, function(data) {
+      console.dir(data);
+      $scope.cities.push({name : data.name,  description : data.weather[0].description, icon : "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png"});
+    });
+  };
+
+  console.log('TestUtility::Is testApp string value null ? :' + TestUtility.isNull('testApp'));
+  console.log('TestUtility::Is testApp string value undefined ? :' + TestUtility.isUndefined('testApp'));
+
+  $cookieStore.put('cat','tekir');
+
+  var body = $('body');
+
+  console.log(body);
+
+  console.log('Login Url : ' + UrlConfig.getUserLoginUrl());
+
+  console.dir(User);
+
+  var testUser = new User('', '', 'John', 'Doe', 'World', '');
+
+  console.log(testUser.name);
+  console.log(testUser.surName);
+  console.log(testUser.address);
+
+  $scope.name = testUser.name;
+  $scope.surName = testUser.surName;
+  $scope.address = testUser.address;
+
+  UserServiceProvider($http).testRequest(function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data.name);
+    };
+  });
+
+  var currentUser = null,
+      userRequest = null,
+      currentUserSession = null,
+      userSession = null;
+
+  var buildUserDatToLogUserIn = function () {
+    currentUser = new User('test@test.com', 'test123', 'John', 'Doe', 'Yukarı Ayrancı No:2', '1655433213');
+    userRequest = new UserRequest(currentUser.getUserName(), currentUser.getPassWord(), currentUser.getBasketId());
+  }
+
+  /*Connect to UserService over UserServiceProvider to log the user in*/
+  UserServiceProvider($http).logUserIn(userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  var buildUserDataTologUserOut = function () {
+    currentUserSession = new UserSession('!jK989&');
+    userSession = new UserRequest(currentUserSession.getSessionKey());
+  }
+
+  /*Connect to UserService over UserServiceProvider to log the user out*/
+  UserServiceProvider($http).logUserOut(userSession, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).getUserInfo(userSession, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).getUserAlternativeInfo(userSession, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).updateUserInfo(userSession, userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).signUserUp(userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).resetUserPassword(userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).changeUserPassword(userSession, userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+};
+
+module.exports = ProductListController;
+}).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/section\\productList\\controller\\ProductListController.js","/section\\productList\\controller")
+},{"../../../config/TestConfig":2,"../../../config/UrlConfig":3,"../../../model/User":5,"../../../model/UserRequest":6,"../../../model/UserSession":7,"../../../provider/UserServiceProvider":8,"../../../service/TestService":11,"../../../utility/TestUtility":13,"buffer":18,"gzNCgL":21,"jquery":22}],10:[function(require,module,exports){
+(function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
+'use strict';
+
+/*===CONFIGS===*/
+var UrlConfig = require('../../../config/UrlConfig');
+var TestConfig = require('../../../config/TestConfig');
+
+/*===MODELS===*/
+var User = require('../../../model/User');
+var UserRequest = require('../../../model/UserRequest');
+var UserSession = require('../../../model/UserSession');
 
 /*===PROVIDERS===*/
 var UserServiceProvider = require('../../../provider/UserServiceProvider');
@@ -418,11 +686,86 @@ var TestCtrl = function($scope, $http, $cookieStore) {
     };
   });
 
+  var currentUser = null,
+      userRequest = null,
+      currentUserSession = null,
+      userSession = null;
+
+  var buildUserDatToLogUserIn = function () {
+    currentUser = new User('test@test.com', 'test123', 'John', 'Doe', 'Yukarı Ayrancı No:2', '1655433213');
+    userRequest = new UserRequest(currentUser.getUserName(), currentUser.getPassWord(), currentUser.getBasketId());
+  };
+
+  buildUserDatToLogUserIn();
+
+  /*Connect to UserService over UserServiceProvider to log the user in*/
+  UserServiceProvider($http).logUserIn(userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  var buildUserDataTologUserOut = function () {
+    currentUserSession = new UserSession('!jK989&');
+    userSession = new UserSession(currentUserSession.getSessionKey());
+  };
+
+  buildUserDataTologUserOut();
+
+  /*Connect to UserService over UserServiceProvider to log the user out*/
+  UserServiceProvider($http).logUserOut(userSession, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).getUserInfo(userSession, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).getUserAlternativeInfo(userSession, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).updateUserInfo(userSession, userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).signUserUp(userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).resetUserPassword(userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
+  /*Connect to UserService over UserServiceProvider to get user info*/
+  UserServiceProvider($http).changeUserPassword(userSession, userRequest, function (data) {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('user data : ' + data);
+    };
+  });
+
 };
 
 module.exports = TestCtrl;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/section\\test\\controller\\TestController.js","/section\\test\\controller")
-},{"../../../config/TestConfig":2,"../../../config/UrlConfig":3,"../../../model/User":5,"../../../provider/UserServiceProvider":6,"../../../service/TestService":8,"../../../utility/TestUtility":10,"buffer":15,"gzNCgL":18,"jquery":19}],8:[function(require,module,exports){
+},{"../../../config/TestConfig":2,"../../../config/UrlConfig":3,"../../../model/User":5,"../../../model/UserRequest":6,"../../../model/UserSession":7,"../../../provider/UserServiceProvider":8,"../../../service/TestService":11,"../../../utility/TestUtility":13,"buffer":18,"gzNCgL":21,"jquery":22}],11:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @name TestService
@@ -459,7 +802,7 @@ var TestService = function ($http) {
 
 module.exports = TestService;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/service\\TestService.js","/service")
-},{"buffer":15,"gzNCgL":18}],9:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],12:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -468,220 +811,228 @@ module.exports = TestService;
  * @desc UserService service
  */
 var UserService = function ($http) {
-	
-	return (function () {
-		
-		return {
 
-			testRequest : function (callback) {
-				$http({
-					method : 'GET',
-					url : 'http://api.openweathermap.org/data/2.5/weather?q=London,uk'
-				}).
-					success(function (data, status, headers, config) {
-						callback(data)
-					}).
-					error(function (data, status, headers, config) {
-						console.log(data);
-				});
-			},
+  return (function () {
 
-			/*
-			* Phase 1.V3 - 2.1 Post User Login
-			*/
-			postUserLogin : function (userName, passWord, basketId, callback) {
-				$http({
-					method : 'GET', 
-					url : 'url',
-					data : {
-						'username' : userName,
-						'password' : passWord,
-						'basket_id' : basketId
-					}
-				}).
-				  success(function(data, status, headers, config) {
-				    /*
-				    * Output : session_key, response_code, errors
-				    */
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
-			},
+    return {
 
-			/*
-			* Phase 1.V3 - 2.2 Post User Logout
-			*/
-			postUserLogout : function (sessionKey, callback) {
-				$http({
-					method : 'POST', 
-					url : 'url', 
-					data : {'session_key' : sessionKey}
-				}).
-				  success(function(data, status, headers, config) {
-				    /*
-				    * Output : response_code, errors
-				    */
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
-			},
+      testRequest : function (callback) {
+        $http({
+          method : 'GET',
+          url : 'http://api.openweathermap.org/data/2.5/weather?q=London,uk'
+        }).
+        success(function (data, status, headers, config) {
+          callback(data)
+        }).
+        error(function (data, status, headers, config) {
+          console.log(data);
+        });
+      },
 
-			/*
-			* Phase 1.V3 - 2.3 Get User List
-			*/
-			getUserList : function (sessionKey, callback) {
-				$http({
-					method : 'GET', 
-					url : 'url', 
-					headers : {'session_key' : sessionKey}
-				}).
-				  success(function(data, status, headers, config) {
-				    /*
-				    * Output : first_name, last_name, email, birthday, gender, response_code, errors
-				    */
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
-			},
+      /*
+      * Phase 1.V3 - 2.1 Post User Login
+      */
+      postUserLogin : function (userRequest, callback) {
+        $http({
+          method : 'GET', 
+          url : 'url',
+          data : {
+            'username' : userRequest.getUserName(),
+            'password' : userRequest.getPassWord(),
+            'basket_id' : userRequest.getBasketId()
+          }
+        }).
+        success(function(data, status, headers, config) {
+          /*
+          * Output : session_key, response_code, errors
+          */
+          callback(data);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(data);
+        });
+      },
 
-			/*
-			* Phase 1.V3 - 2.4 Get User Detail
-			*/
-			getUserDetail : function (sessionKey, callback) {
-				$http({
-					method : 'GET', 
-					url : 'url', 
-					headers : {'session_key' : sessionKey}
-				}).
-				  success(function(data, status, headers, config) {
-				    /*
-				    * Output : first_name, last_name, email, birthday, gender, response_code, errors
-				    */
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
-			},
+      /*
+      * Phase 1.V3 - 2.2 Post User Logout
+      */
+      postUserLogout : function (userSession, callback) {
+        $http({
+          method : 'POST', 
+          url : 'url', 
+          data : {
+            'session_key' : userSession.getSessionKey()
+          }
+        }).
+        success(function(data, status, headers, config) {
+          /*
+          * Output : response_code, errors
+          */
+          callback(data);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(data);
+        });
+      },
 
-			/*
-			* Phase 1.V3 - 2.5 Patch User Info
-			*/
-			patchUserInfo : function (sessionKey, firstName, lastName, email, birthday, gender, callback) {
-				$http({
-					method : 'POST', 
-					url : 'url', 
-					headers : {'session_key': sessionKey},
-					data : {
-						'first_name' : firstName,
-						'last_name' : lastName,
-						'email' : email,
-						'birthday' : birthday,
-						'gender' : gender
-					}
-				}).
-				  success(function(data, status, headers, config) {
-				    /*
-				    * Output : response_code, errors
-				    */
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
-			},
+      /*
+      * Phase 1.V3 - 2.3 Get User List
+      */
+      getUserList : function (userSession, callback) {
+        $http({
+          method : 'GET', 
+          url : 'url', 
+          headers : {
+            'session_key' : userSession.getSessionKey()
+          }
+        }).
+        success(function(data, status, headers, config) {
+          /*
+          * Output : first_name, last_name, email, birthday, gender, response_code, errors
+          */
+          callback(data);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(data);
+        });
+      },
 
-			/*
-			* Phase 1.V3 - 2.6 Post User Signup
-			*/
-			postUserSignUp : function (firstName, lastName, email, gender, password, basketId, callback) {
-				$http({
-					method : 'POST', 
-					url : 'url', 
-					data : {
-						'first_name' : firstName,
-						'last_name' : lastName,
-						'email' : email,
-						'gender' : gender,
-						'password' : password,
-						'basket_id' : basketId	
-					}
-				}).
-				  success(function(data, status, headers, config) {
-				    /*
-				    * Output headers : Location
-				    */
-				    callback(headers);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
-			},
+      /*
+      * Phase 1.V3 - 2.4 Get User Detail
+      */
+      getUserDetail : function (userSession, callback) {
+        $http({
+          method : 'GET', 
+          url : 'url', 
+          headers : {
+            'session_key' : userSession.getSessionKey()
+          }
+        }).
+        success(function(data, status, headers, config) {
+          /*
+          * Output : first_name, last_name, email, birthday, gender, response_code, errors
+          */
+          callback(data);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(data);
+        });
+      },
 
-			/*
-			* Phase 1.V3 - 2.7 Post Reset Password
-			*/
-			postResetPassword : function (email, callback) {
-				$http({
-					method : 'POST', 
-					url : 'url', 
-					data : {
-						'email' : email
-					}
-				}).
-				  success(function(data, status, headers, config) {
-				    /*
-				    * Output : response_code, errors
-				    */
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
-			},
+      /*
+      * Phase 1.V3 - 2.5 Patch User Info
+      */
+      patchUserInfo : function (userSession, userRequest, callback) {
+        $http({
+          method : 'POST', 
+          url : 'url', 
+          headers : {
+            'session_key': userSession.getSessionKey()
+          },
+          data : {
+            'first_name' : userRequest.getFirstName(),
+            'last_name' : userRequest.getLastName(),
+            'email' : userRequest.getEmail,
+            'birthday' : userRequest.getBirthday(),
+            'gender' : userRequest.getGender()
+          }
+        }).
+        success(function(data, status, headers, config) {
+          /*
+          * Output : response_code, errors
+          */
+          callback(data);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(data);
+        });
+      },
 
-			/*
-			* Phase 1.V3 - 2.8 Post Change Password
-			*/
-			postChangePassword : function (sessionKey, oldPassword, newPassword1, newPassword2, callback) {
-				$http({
-					method : 'POST', 
-					url : 'url', 
-					headers : {
-						'session_key' : sessionKey
-					},
-					data : {
-						'old_password' : oldPassword,
-						'new_password1' : newPassword1,
-						'new_password2' : newPassword2
-					}
-				}).
-				  success(function(data, status, headers, config) {
-				    /*
-				    * Output : response_code, errors
-				    */
-				    callback(data);
-				  }).
-				  error(function(data, status, headers, config) {
-				    console.log(data);
-				});
-			}
+      /*
+      * Phase 1.V3 - 2.6 Post User Signup
+      */
+      postUserSignUp : function (userRequest, callback) {
+        $http({
+          method : 'POST', 
+          url : 'url', 
+          data : {
+            'first_name' : userRequest.getFirstName(),
+            'last_name' : userRequest.getLastName,
+            'email' : userRequest.getEmail(),
+            'gender' : userRequest.getGender(),
+            'password' : userRequest.getPassWord(),
+            'basket_id' : userRequest.getBasketId()	
+          }
+        }).
+        success(function(data, status, headers, config) {
+          /*
+          * Output headers : Location
+          */
+          callback(headers);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(data);
+        });
+      },
 
-		}
+      /*
+      * Phase 1.V3 - 2.7 Post Reset Password
+      */
+      postResetPassword : function (userRequest, callback) {
+        $http({
+          method : 'POST', 
+          url : 'url', 
+          data : {
+          'email' : userRequest.getEmail()
+          }
+        }).
+        success(function(data, status, headers, config) {
+          /*
+          * Output : response_code, errors
+          */
+          callback(data);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(data);
+        });
+      },
 
-	})();
+      /*
+      * Phase 1.V3 - 2.8 Post Change Password
+      */
+      postChangePassword : function (userSession, userRequest, callback) {
+        $http({
+          method : 'POST', 
+          url : 'url', 
+          headers : {
+            'session_key' : userSession.getSessionKey()
+          },
+          data : {
+            'old_password' : userRequest.getOldPassWord(),
+            'new_password1' : userRequest.getNewPassWord1(),
+            'new_password2' : userRequest.getNewPassWord2()
+          }
+        }).
+        success(function(data, status, headers, config) {
+          /*
+          * Output : response_code, errors
+          */
+          callback(data);
+        }).
+        error(function(data, status, headers, config) {
+          console.log(data);
+        });
+      }
+
+    }
+
+  })();
 
 };
 
 module.exports = UserService;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/service\\UserService.js","/service")
-},{"buffer":15,"gzNCgL":18}],10:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],13:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -694,7 +1045,7 @@ module.exports = {
 	}
 };
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/utility\\TestUtility.js","/utility")
-},{"buffer":15,"gzNCgL":18}],11:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],14:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.3.3
@@ -2834,7 +3185,7 @@ angular.module('ngAnimate', ['ng'])
 })(window, window.angular);
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular-animate\\angular-animate.js","/..\\..\\node_modules\\angular-animate")
-},{"buffer":15,"gzNCgL":18}],12:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],15:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.2.19
@@ -3042,7 +3393,7 @@ angular.module('ngCookies', ['ng']).
 })(window, window.angular);
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular-module-cookies\\angular-cookies.js","/..\\..\\node_modules\\angular-module-cookies")
-},{"buffer":15,"gzNCgL":18}],13:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],16:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.2.27
@@ -3967,7 +4318,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 })(window, window.angular);
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular-route\\angular-route.js","/..\\..\\node_modules\\angular-route")
-},{"buffer":15,"gzNCgL":18}],14:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],17:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.3.3
@@ -29721,7 +30072,7 @@ var styleDirective = valueFn({
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\angular\\angular.js","/..\\..\\node_modules\\angular")
-},{"buffer":15,"gzNCgL":18}],15:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],18:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
  * The buffer module from node.js, for the browser.
@@ -30834,7 +31185,7 @@ function assert (test, message) {
 }
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\buffer\\index.js","/..\\..\\node_modules\\browserify\\node_modules\\buffer")
-},{"base64-js":16,"buffer":15,"gzNCgL":18,"ieee754":17}],16:[function(require,module,exports){
+},{"base64-js":19,"buffer":18,"gzNCgL":21,"ieee754":20}],19:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
@@ -30958,7 +31309,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib\\b64.js","/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib")
-},{"buffer":15,"gzNCgL":18}],17:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],20:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
@@ -31046,7 +31397,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
 };
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754\\index.js","/..\\..\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754")
-},{"buffer":15,"gzNCgL":18}],18:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],21:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 // shim for using process in browser
 
@@ -31113,7 +31464,7 @@ process.chdir = function (dir) {
 };
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\browserify\\node_modules\\process\\browser.js","/..\\..\\node_modules\\browserify\\node_modules\\process")
-},{"buffer":15,"gzNCgL":18}],19:[function(require,module,exports){
+},{"buffer":18,"gzNCgL":21}],22:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /*!
  * jQuery JavaScript Library v2.1.1
@@ -40307,4 +40658,4 @@ return jQuery;
 }));
 
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/..\\..\\node_modules\\jquery\\dist\\jquery.js","/..\\..\\node_modules\\jquery\\dist")
-},{"buffer":15,"gzNCgL":18}]},{},[4])
+},{"buffer":18,"gzNCgL":21}]},{},[4])

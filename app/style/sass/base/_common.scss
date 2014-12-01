@@ -1,0 +1,30 @@
+//_common.scss
+
+* html .clearfix {
+	height: 1%;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+
+input, button, textarea {
+	margin : 5px 0 0 0;
+}
+.clear:before,
+.clear:after {
+  content: " ";
+  display: table;
+}
+
+.clear:after {
+  clear: both;
+}
+
+.test12 {
+	font-size: 60px;
+}
+
+h3 {
+	color: #d3d3d3 !important;
+}

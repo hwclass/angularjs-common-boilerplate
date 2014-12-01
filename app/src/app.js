@@ -17,6 +17,7 @@
 
   /*===CONTROLLERS===*/
   var TestController = require('./section/test/controller/TestController');
+  var ProductListController = require('./section/productList/controller/ProductListController');
 
   /*===DIRECTIVES===*/
   var TestComponent = require('./component/TestComponent');
@@ -27,9 +28,13 @@
       .when('/test', {
         templateUrl : './src/section/test/partial/test.html',
         controller : 'TestController'
-    })
-    .otherwise({
-      redirectTo: '/'
+      })
+      .when('/productList', {
+        templateUrl : './src/section/productList/partial/productList.html',
+        controller : 'ProductListController'
+      })
+      .otherwise({
+        redirectTo: '/'
     });
   }])
   .controller('TestController', ['$scope', '$http', '$cookieStore', TestController])

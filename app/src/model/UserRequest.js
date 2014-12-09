@@ -1,6 +1,9 @@
-/*
-* Model::Request
-*/
+'use strict';
+
+/**
+ * @name UserRequest
+ * @desc Model for UserRequest
+ */
 
 var UserRequest = function (firstName, lastName, email, birthday, gender, userName, passWord, oldPassWord, newPassWord1, newPassWord2, basketId) {
 

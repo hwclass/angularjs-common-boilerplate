@@ -1,6 +1,9 @@
-/*
-* Model::Session
-*/
+'use strict';
+
+/**
+ * @name Session
+ * @desc Model for Session
+ */
 
 var Session = function (sessionId) {
 

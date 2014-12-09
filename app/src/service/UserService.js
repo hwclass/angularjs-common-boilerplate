@@ -2,7 +2,7 @@
 
 /**
  * @name UserService
- * @desc UserService service
+ * @desc Service for User
  */
 var UserService = function ($http) {
 

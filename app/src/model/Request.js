@@ -1,6 +1,9 @@
-/*
-* Model::Request
-*/
+'use strict';
+
+/**
+ * @name Request
+ * @desc Model for Request
+ */
 
 var Request = function (requestId) {
 

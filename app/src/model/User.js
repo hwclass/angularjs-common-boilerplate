@@ -1,6 +1,9 @@
-/*
-* Model::User
-*/
+'use strict';
+
+/**
+ * @name User
+ * @desc Model for User
+ */
 
 var User = function (userName, passWord, name, surName, address, basketId) {
 	

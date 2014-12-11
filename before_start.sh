@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\n\e[36mWelcome to Zizigo Mobile Web Application\n\n\e[33mDikeyshop Development Team\n"
+echo -e "\n\e[36mWelcome to the boilerplate for SPAs\n"
 sleep 5
 
 echo -e "\n\e[36mNeeded packages are being downloaded (apt-get)...\n\e[34m"

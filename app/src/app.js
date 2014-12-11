@@ -38,6 +38,7 @@
     });
   }])
   .controller('TestController', ['$scope', '$http', '$cookieStore', TestController])
+  .controller('ProductListController', ['$scope', '$http', '$cookieStore', ProductListController])
   .factory('TestService', ['$http', TestService])
   .directive('TestComponent', [TestComponent]);
 

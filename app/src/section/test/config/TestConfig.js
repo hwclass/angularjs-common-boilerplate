@@ -1,3 +1,8 @@
+/**
+ * @name TestConfig
+ * @desc TestConfig config
+ */
+
 'use strict';
 
 module.exports = {

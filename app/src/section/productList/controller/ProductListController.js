@@ -1,3 +1,8 @@
+/**
+ * @name ProductListController
+ * @desc ProductListController controller
+ */
+
 'use strict';
 
 /*===CONFIGS===*/
@@ -60,11 +65,15 @@ var ProductListController = function($scope, $http, $cookieStore) {
   var testUser = new User('', '', 'John', 'Doe', 'World', '');
 
   console.log(testUser.name);
+
   console.log(testUser.surName);
+
   console.log(testUser.address);
 
   $scope.name = testUser.name;
+
   $scope.surName = testUser.surName;
+
   $scope.address = testUser.address;
 
   UserServiceProvider($http).testRequest(function (data) {
@@ -78,10 +87,12 @@ var ProductListController = function($scope, $http, $cookieStore) {
       currentUserSession = null,
       userSession = null;
 
-  var buildUserDatToLogUserIn = function () {
+  var buildUserDataToLogUserIn = function () {
     currentUser = new User('test@test.com', 'test123', 'John', 'Doe', 'Yukarı Ayrancı No:2', '1655433213');
     userRequest = new UserRequest(currentUser.getUserName(), currentUser.getPassWord(), currentUser.getBasketId());
-  }
+  };
+
+  buildUserDataToLogUserIn();
 
   /*Connect to UserService over UserServiceProvider to log the user in*/
   UserServiceProvider($http).logUserIn(userRequest, function (data) {
@@ -92,32 +103,36 @@ var ProductListController = function($scope, $http, $cookieStore) {
 
   var buildUserDataTologUserOut = function () {
     currentUserSession = new UserSession('!jK989&');
-    userSession = new UserRequest(currentUserSession.getSessionKey());
-  }
+    //userSession = new UserRequest(currentUserSession.getSessionKey());
+  };
+
+  buildUserDataTologUserOut();
+
+  console.dir(currentUserSession);
 
   /*Connect to UserService over UserServiceProvider to log the user out*/
-  UserServiceProvider($http).logUserOut(userSession, function (data) {
+  UserServiceProvider($http).logUserOut(currentUserSession, function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data);
     };
   });
 
   /*Connect to UserService over UserServiceProvider to get user info*/
-  UserServiceProvider($http).getUserInfo(userSession, function (data) {
+  UserServiceProvider($http).getUserInfo(currentUserSession, function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data);
     };
   });
 
   /*Connect to UserService over UserServiceProvider to get user info*/
-  UserServiceProvider($http).getUserAlternativeInfo(userSession, function (data) {
+  UserServiceProvider($http).getUserAlternativeInfo(currentUserSession, function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data);
     };
   });
 
   /*Connect to UserService over UserServiceProvider to get user info*/
-  UserServiceProvider($http).updateUserInfo(userSession, userRequest, function (data) {
+  UserServiceProvider($http).updateUserInfo(currentUserSession, userRequest, function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data);
     };
@@ -138,7 +153,7 @@ var ProductListController = function($scope, $http, $cookieStore) {
   });
 
   /*Connect to UserService over UserServiceProvider to get user info*/
-  UserServiceProvider($http).changeUserPassword(userSession, userRequest, function (data) {
+  UserServiceProvider($http).changeUserPassword(currentUserSession, userRequest, function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data);
     };

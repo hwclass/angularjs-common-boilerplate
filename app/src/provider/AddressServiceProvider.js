@@ -1,4 +1,9 @@
-'use strict';
+/**
+ * @name AddressServiceProvider
+ * @desc AddressServiceProvider provider
+ */
+
+ 'use strict';
 
 /*===SERVICES===*/
 var AddressService = require('../service/AddressService');
@@ -31,3 +36,5 @@ var AddressServiceProvider = function ($http) {
   })();
 
 };
+
+module.exports = AddressServiceProvider;

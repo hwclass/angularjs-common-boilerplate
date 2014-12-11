@@ -1,17 +1,14 @@
-'use strict';
-
-/**
- * @name User
- * @desc Model for User
- */
+/*
+* Model::User
+*/
 
 var User = function (userName, passWord, name, surName, address, basketId) {
-	
+
   this.userName = userName;
 
   this.passWord = passWord;
 
-	this.name = name;
+  this.name = name;
 
   this.surName = surName;
 
@@ -39,9 +36,9 @@ var User = function (userName, passWord, name, surName, address, basketId) {
     return this.address;
   };
 
-	this.getBasketId = function () {
-		return this.basketId;
-	};
+  this.getBasketId = function () {
+    return this.basketId;
+  };
 
 };
 

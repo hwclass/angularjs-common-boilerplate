@@ -1,9 +1,6 @@
-'use strict';
-
-/**
- * @name UserRequest
- * @desc Model for UserRequest
- */
+/*
+* Model::Request
+*/
 
 var UserRequest = function (firstName, lastName, email, birthday, gender, userName, passWord, oldPassWord, newPassWord1, newPassWord2, basketId) {
 
@@ -28,7 +25,7 @@ var UserRequest = function (firstName, lastName, email, birthday, gender, userNa
 	this.newPassWord2 = newPassWord2;
 
 	this.basketId = basketId;
-	
+
 	this.getFirstName = function () {
 		return this.firstName;
 	};

@@ -1,4 +1,7 @@
-'use strict';
+/**
+ * @name TestController
+ * @desc TestController controller
+ */
 
 /*===CONFIGS===*/
 var UrlConfig = require('../../../config/UrlConfig');

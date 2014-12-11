@@ -1,4 +1,9 @@
-'use strict';
+/**
+ * @name UserServiceProvider
+ * @desc UserServiceProvider provider
+ */
+
+ 'use strict';
 
 /*===SERVICES===*/
 var UserService = require('../service/UserService');
@@ -7,7 +12,7 @@ var UserService = require('../service/UserService');
  * @name UserServiceProvider
  * @desc Service provider for UserService
  */
-var ServiceProvider = function ($http) {
+var UserServiceProvider = function ($http) {
 
   return (function () {
 
@@ -156,4 +161,4 @@ var ServiceProvider = function ($http) {
 
 };
 
- module.exports = ServiceProvider;
+ module.exports = UserServiceProvider;

@@ -1,9 +1,6 @@
-'use strict';
-
-/**
- * @name UserSession
- * @desc Model for UserSession
- */
+/*
+* Model::UserSession
+*/
 
 var UserSession = function (sessionKey) {
 

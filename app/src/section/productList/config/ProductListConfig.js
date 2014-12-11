@@ -1,7 +1,12 @@
+/**
+ * @name ProductListConfig
+ * @desc ProductListConfig config
+ */
+
 'use strict';
 
 module.exports = {
-  title : 'Weather Situations in the Cities',
+  title : 'Product List Page',
   cities : [
     {city : 'Istanbul', prefix : 'tr'},
     {city : 'Berlin', prefix : 'de'},

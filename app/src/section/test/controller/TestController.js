@@ -14,6 +14,7 @@ var UserSession = require('../../../model/UserSession');
 
 /*===PROVIDERS===*/
 var UserServiceProvider = require('../../../provider/UserServiceProvider');
+var AddressServiceProvider = require('../../../provider/AddressServiceProvider');
 
 /*===SERVICES===*/
 var TestService = require('../../../service/TestService');
@@ -73,6 +74,12 @@ var TestCtrl = function($scope, $http, $cookieStore) {
   UserServiceProvider($http).testRequest(function (data) {
     if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
       console.dir('user data : ' + data.name);
+    };
+  });
+
+  AddressServiceProvider($http).getUserAddress(function () {
+    if(!TestUtility.isNull(data) && !TestUtility.isUndefined(data)) {
+      console.dir('returning data : ' + data);
     };
   });
 

@@ -14,8 +14,13 @@ var TestComponent = function () {
 };
 
 module.exports = TestComponent;
+<<<<<<< Updated upstream
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/component\\TestComponent.js","/component")
 },{"buffer":18,"gzNCgL":21}],2:[function(require,module,exports){
+=======
+}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/component/TestComponent.js","/component")
+},{"Wb8Gej":21,"buffer":18}],2:[function(require,module,exports){
+>>>>>>> Stashed changes
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 'use strict';
 
@@ -158,12 +163,20 @@ module.exports = (function() {
   .directive('TestComponent', [TestComponent]);
 
 })();
+<<<<<<< Updated upstream
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_a226c183.js","/")
 },{"./component/TestComponent":1,"./section/productList/controller/ProductListController":9,"./section/test/controller/TestController":10,"./service/TestService":11,"angular":17,"angular-animate":14,"angular-module-cookies":15,"angular-route":16,"buffer":18,"gzNCgL":21}],5:[function(require,module,exports){
+=======
+}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_990e2ebd.js","/")
+},{"./component/TestComponent":1,"./section/productList/controller/ProductListController":9,"./section/test/controller/TestController":10,"./service/TestService":11,"Wb8Gej":21,"angular":17,"angular-animate":14,"angular-module-cookies":15,"angular-route":16,"buffer":18}],5:[function(require,module,exports){
+>>>>>>> Stashed changes
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-/*
-* Model::User
-*/
+'use strict';
+
+/**
+ * @name User
+ * @desc Model for User
+ */
 
 var User = function (userName, passWord, name, surName, address, basketId) {
 
@@ -209,9 +222,12 @@ module.exports = User;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/model\\User.js","/model")
 },{"buffer":18,"gzNCgL":21}],6:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-/*
-* Model::Request
-*/
+'use strict';
+
+/**
+ * @name UserRequest
+ * @desc Model for UserRequest
+ */
 
 var UserRequest = function (firstName, lastName, email, birthday, gender, userName, passWord, oldPassWord, newPassWord1, newPassWord2, basketId) {
 
@@ -287,9 +303,12 @@ module.exports = UserRequest;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/model\\UserRequest.js","/model")
 },{"buffer":18,"gzNCgL":21}],7:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
-/*
-* Model::UserSession
-*/
+'use strict';
+
+/**
+ * @name UserSession
+ * @desc Model for UserSession
+ */
 
 var UserSession = function (sessionKey) {
 
@@ -468,9 +487,15 @@ var UserServiceProvider = function ($http) {
 
 };
 
+<<<<<<< Updated upstream
  module.exports = UserServiceProvider;
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/provider\\UserServiceProvider.js","/provider")
 },{"../service/UserService":12,"buffer":18,"gzNCgL":21}],9:[function(require,module,exports){
+=======
+module.exports = ServiceProvider;
+}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/provider/UserServiceProvider.js","/provider")
+},{"../service/UserService":12,"Wb8Gej":21,"buffer":18}],9:[function(require,module,exports){
+>>>>>>> Stashed changes
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @name ProductListController
@@ -1093,8 +1118,13 @@ var TestUtility = function () {
 };
 
 module.exports = TestUtility;
+<<<<<<< Updated upstream
 }).call(this,require("gzNCgL"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/utility\\TestUtility.js","/utility")
 },{"buffer":18,"gzNCgL":21}],14:[function(require,module,exports){
+=======
+}).call(this,require("Wb8Gej"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/utility/TestUtility.js","/utility")
+},{"Wb8Gej":21,"buffer":18}],14:[function(require,module,exports){
+>>>>>>> Stashed changes
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 /**
  * @license AngularJS v1.3.3

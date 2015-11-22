@@ -161,4 +161,8 @@ var UserServiceProvider = function ($http) {
 
 };
 
+<<<<<<< Updated upstream
  module.exports = UserServiceProvider;
+=======
+module.exports = ServiceProvider;
+>>>>>>> Stashed changes

@@ -1,0 +1,16 @@
+{
+  "name": "angular2-boilerplate",
+  "version": "1.0.0",
+  "description": "A boilerplate using Angular 2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular2",
+    "framework",
+    "boilerplate"
+  ],
+  "author": "hwclass",
+  "license": "MIT"
+}

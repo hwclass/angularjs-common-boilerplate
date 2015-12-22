@@ -1,11 +1,11 @@
-'use strict';
-
 /**
  * @name AddressService
  * @desc AddressService service
  */
 
 var AddressService = function ($http) {
+
+  'use strict';
 
   return(function () {
 
@@ -29,7 +29,7 @@ var AddressService = function ($http) {
       */
       getUserAddress : function (userSession, callback) {
     	  $http({
-          method : 'GET', 
+          method : 'GET',
           url : 'url',
           data : {
             'session_key' : userSession.getSessionKey()
@@ -51,3 +51,5 @@ var AddressService = function ($http) {
   })();
 
 };
+
+module.exports = AddressService;

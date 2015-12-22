@@ -8,6 +8,8 @@
 /*===SERVICES===*/
 var AddressService = require('../service/AddressService');
 
+console.log(AddressService);
+
 /**
  * @name AddressServiceProvider
  * @desc Service provider for AddressService
@@ -42,7 +44,7 @@ var AddressServiceProvider = function ($http) {
        * @returns {undefined}
        */
       getUserAddress : function (userSession, callback) {
-      	AddressService($http).getUserAddress(function (data) {
+      	AddressService($http).getUserAddress(userSession, function (data) {
       	  callback(data);
       	});
       }

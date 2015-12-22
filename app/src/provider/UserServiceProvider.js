@@ -64,7 +64,7 @@ var UserServiceProvider = function ($http) {
       /**
        * @name getUserInfo
        * @ref getUserList
-       * @desc This method retrieves the information with profile details of the current user 
+       * @desc This method retrieves the information with profile details of the current user
        * @param {String} sessionKey - Session key value
        * @param {Function} callback - Callback after response returns
        * @returns {undefined}
@@ -92,7 +92,7 @@ var UserServiceProvider = function ($http) {
       /**
        * @name updateUserInfo
        * @ref patchUserInfo
-       * @desc This method updates the information with profile details of the current user 
+       * @desc This method updates the information with profile details of the current user
        * @param {String} sessionKey - Session key value
        * @param {String} firstName - First name value
        * @param {String} lastName - Last name value
@@ -161,8 +161,4 @@ var UserServiceProvider = function ($http) {
 
 };
 
-<<<<<<< Updated upstream
- module.exports = UserServiceProvider;
-=======
-module.exports = ServiceProvider;
->>>>>>> Stashed changes
+module.exports = UserServiceProvider;

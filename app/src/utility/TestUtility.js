@@ -3,9 +3,9 @@
  * @desc TestUtility utility
  */
 
-'use strict';
+var TestUtility = (function () {
 
-var TestUtility = function () {
+  'use strict';
 
   return(function () {
 
@@ -14,7 +14,7 @@ var TestUtility = function () {
       isNull : function (obj) {
         return (typeof obj === 'null' ? true : false);
       },
-      
+
       isUndefined : function (obj) {
         return (typeof obj === 'undefined' ? true : false);
       }
@@ -23,6 +23,6 @@ var TestUtility = function () {
 
   })();
 
-};
+})();
 
 module.exports = TestUtility;
